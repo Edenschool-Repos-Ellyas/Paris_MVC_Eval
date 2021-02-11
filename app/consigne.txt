@@ -1,0 +1,8 @@
+Créé un site de petites annonces de ventes de mobiliers. Le site permet l'inscription ou la connexion. 
+L'authentification nécessite de renseigner un email ainsi qu'un mot de passe. 
+L'utilisateur à la possibilité dee modifier les informations de son profil tel que son nom, son prénom, son adresse, son code postal ou encore son mail. 
+Il ne peut y avoir qu'un compte pour un mail donné.
+Les mobiliers dispose d'un nom de modèle, la couleur et la taille sont également renseigner.
+Il est possible de filtrer les mobiliers par type de mobiliers ou encore par propriétaire de l'annonce, les visiteurs on également la possibilité dee laissé un commentaire sur unee annonces.
+
+A vous de jouer !!!
