@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 *{
     box-sizing: border-box;
@@ -23,8 +25,8 @@ main{
     margin: 0 auto;
 }
 
-h1, h2, h3, h4, h5, h6, a{
-    font-family: 'Roboto', sans-serif;
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Roboto', sans-serif !important;
     color: #3A3A3A !important;
     text-decoration: none;
 }
@@ -37,9 +39,11 @@ a:hover{
 p, a, select {
     font-family: 'Alegreya Sans', sans-serif;
 	font-size: 1rem !important;
-	color: #A5A5A5;
+	color: #A5A5A5 !important;
 }
-
+a{
+    color: #3A3A3A !important;
+}
 b{
     width: 100%;
 }
@@ -86,6 +90,8 @@ ul, ol{
     display: flex;
     align-items: center;
     justify-content: center;
+
+    margin: 40px 0;
 }
 .nav-image-center img{
     width: 100%;
@@ -140,7 +146,8 @@ ul, ol{
     height: 60px;
     border-top: 2px solid black;
     border-bottom: 4px solid black;
-    margin-top: 80px
+    margin-top: 20px;
+    /* margin: 0 15px; */
 }
 .top-nav > ul {
 	margin: 0;
@@ -151,12 +158,14 @@ ul, ol{
 
 .top-nav > ul > li {
     width: auto;
+    min-width: 60px;
+    
 }
 
 .top-nav > ul > li a {
 	text-decoration: none;
 	font-size: 1rem;
-    font-weight: 600 !important;
+    font-weight: bold;
     width: auto;
 }
 .top-nav > ul > li a:hover {
@@ -176,7 +185,7 @@ ul, ol{
 
 .more{
     position: relative;
-    min-width: 5.5rem;
+    /* min-width: 5.5rem; */
     cursor: pointer;
     user-select: none;
 }
@@ -227,7 +236,7 @@ ul, ol{
 }
 .more-link h3{
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 900;
 }
 
 
@@ -275,6 +284,9 @@ ul, ol{
 .flex-wrap{
     flex-wrap: wrap;
 }
+.flex-center{
+    justify-content: center;
+}
 
 .show{
     display: block;
@@ -286,7 +298,13 @@ ul, ol{
 
 
 
-
+/* CONTAINER SPECIFICATION */
+.container{
+    padding: 0 !important;
+}
+.container:first-of-type{
+    padding-top: 20px !important;
+}
 
 
 
