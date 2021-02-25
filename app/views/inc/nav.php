@@ -118,7 +118,7 @@
 											
 										</ul>
 									</div>
-									<div class="col-xs-12 col-sm-6 class="" col-md-3">
+									<div class="col-xs-12 col-sm-6 col-md-3">
 										<ul>
 											<li> <h3>WIDGET HEADER</h3> </li>
 											<li> <a href="2"><h4>Awesome Features</h4></a> </li>
