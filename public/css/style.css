@@ -1,58 +1,9 @@
-html, body {
-	height: 100%;
-	width: 100%;
-	padding: 0;
-	margin: 0;
-	top: 0;
-	bottom: 0;
-	font-family: 'Lato', sans-serif;
-	background-color: #c7bfa5;
-}
-a {
-	text-decoration: none;
-}
-h2 {
-	font-size: 50px;
-	margin: 0;
-}
-h3 {
-	font-size: 14px;
-	color: #696969;
-	font-weight: 100;
-	font-style: italic;
-}
-p {
-	font-size: 18px;
-	color: #666;
-}
-.top-nav {
-	display: block;
-}
-.top-nav ul {
-	margin: 0;
-	padding: 0;
-	position: absolute;
-	right: 6%;
-	top: 2%;
-}
-.top-nav ul li {
-	display: inline-block;
-	margin-left: 28px;
-}
-.top-nav ul li a {
-	color: #ffffff;
-	text-decoration: none;
-	font-size: 18px;
-}
-.top-nav ul li a:hover {
-	color: #afafaf;
-	transition: 0.15s ease-in;
-}
 #section-landing {
 	background-size: cover;
 	background: url('../img/banner.jpg') no-repeat center;
 	height: 100%;
 	width: 100%;
+	float: left;
 }
 .wrapper-landing {
 	position: relative;
@@ -207,7 +158,7 @@ textarea {
 	height: 40px;
 }
 
-.show{
+/* .show{
 	margin: 0 auto;
 	min-width: 500px;
 	max-width: 700px;
@@ -215,7 +166,7 @@ textarea {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-}
+} */
 
 .form-item label, .form-item input, .form-item small{
 	display: block;

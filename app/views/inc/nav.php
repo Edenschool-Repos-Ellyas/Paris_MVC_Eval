@@ -1,30 +1,140 @@
-<nav class="top-nav">
-	<ul>
-		<li>
-			<a href="<?php echo URL_ROOT; ?>/index">Home</a>
-		</li>
-		<li>
-			<a href="<?php echo URL_ROOT; ?>/about">About</a>
-		</li>
-		<li>
-			<a href="<?php echo URL_ROOT; ?>/projects">Projects</a>
-		</li>
-		<li>
-			<a href="<?php echo URL_ROOT; ?>/mobiliers">Mobiliers</a>
-		</li>
-		<li>
-			<a href="<?php echo URL_ROOT; ?>/contact">Contact</a>
-		</li>
-		<li>
-			<?php if(isset($_SESSION['user_id'])) : ?>
-				<a href="<?php echo URL_ROOT; ?>/users/profile">Profil</a>
-		</li>
-		<li class="btn-login">
-				<a href="<?php echo URL_ROOT; ?>/users/logout">Log out</a>
-			<?php else : ?>
-				<a href="<?php echo URL_ROOT; ?>/users/login">Login</a>
-				
-			<?php endif; ?>
-		</li>
-	</ul>
-</nav>
+<header>
+	<div class="container">
+		<div class="row">
+			
+			<div class="col-xs-4 col-md-4">
+				<div class="date-container">
+					<div>
+						<p>&ThinSpace; SUNDAY . 09 AUGUST . 2022</p>
+					</div>
+					<div class="bordure"></div>
+					<div class="social-media">
+						<ul>
+							<li><i class="fab fa-facebook-f"></i></li>
+							<li><i class="fab fa-twitter"></i></li>
+							<li><i class="fab fa-instagram"></i></li>
+							<li><i class="fab fa-tumblr"></i></li>
+							<li><i class="fas fa-rss"></i></li>
+						</ul>
+					</div>
+				</div>
+				<!-- /.date-container -->
+			</div>
+			<!-- block de gauche -->
+	
+			
+			<div class="col-xs-4 col-md-4 nav-image-center">
+				<img src="<?= URL_ROOT ?>/public/img/logo.png" alt="Tech NewsLogo" class="img-fluid">
+			</div>
+			<!-- Block du millieu -->
+	
+			
+			<div class="col-xs-4 col-md-4 ">
+				<div class="login-container pull-right">
+	
+					<div class="login flex flex-right flex-wrap">
+						<?php if(isset($_SESSION['user_id'])) : ?>
+							<a href="<?php echo URL_ROOT; ?>/users/profile">Profil</a>
+							<a href="<?php echo URL_ROOT; ?>/users/logout">Log out</a>
+						<?php else : ?>
+							<a href="<?php echo URL_ROOT; ?>/users/login">
+								<b>LOGIN &ThickSpace; / &ThickSpace; REGISTER</b>
+							</a>
+						<?php endif; ?>
+	
+							<!-- Language select -->
+							<select>
+								<option value="EN">EN</option>
+								<option value="FR">FR</option>
+							</select>
+					</div>
+					
+					<div class="bordure bordure-droite"></div>
+					
+	
+					<div class="search flex flex-right">
+						<input type="search" name="search" id="search" class="">
+						<label for="search"><i class="fas fa-search fa-lg"></i></label>
+					</div>
+	
+				</div>
+			</div>
+			<!-- Block de droite -->
+
+
+		</div>
+
+		<div class="row">
+			<nav class="top-nav">
+				<ul class="nav nav-justified">
+					<li>
+						<a href="<?php echo URL_ROOT; ?>/index" gray="true">NEWS</a>
+					</li>
+		
+					<?php for ($i=0; $i <= 4; $i++): ?>
+						<li>
+							<a href="<?php echo URL_ROOT; ?>/catogery/cat_<?= $i?>">CAT_<?= $i?></a>
+						</li>
+					<?php endfor; ?>
+		
+					<li class="more">
+						<a>MORE &bigtriangledown;</a>
+					</li>
+
+					<div class="more-link hide">
+						<!-- <div class="container"> -->
+							<div class="row">
+								<div class="col-xs-6 col-md-3">
+									<ul>
+										<li> <h3>WIDGET HEADER</h3> </li>
+										<li> <a href="2"><h4>Awesome Features</h4></a> </li>
+										<li> <a href="2"><h4>Clean Interface</h4></a> </li>
+										<li> <a href="2"><h4>Available Possiblities</h4></a> </li>
+										<li> <a href="2"><h4>Responsive Design</h4></a> </li>
+										<li> <a href="2"><h4>Pixel Perfect Graphics</h4></a> </li>
+										
+									</ul>
+								</div>
+								<div class="col-xs-6 col-md-3">
+									<ul>
+										<li> <h3>WIDGET HEADER</h3> </li>
+										<li> <a href="2"><h4>Awesome Features</h4></a> </li>
+										<li> <a href="2"><h4>Clean Interface</h4></a> </li>
+										<li> <a href="2"><h4>Available Possiblities</h4></a> </li>
+										<li> <a href="2"><h4>Responsive Design</h4></a> </li>
+										<li> <a href="2"><h4>Pixel Perfect Graphics</h4></a> </li>
+										
+									</ul>
+								</div>
+								<div class="col-xs-6 col-md-3">
+									<ul>
+										<li> <h3>WIDGET HEADER</h3> </li>
+										<li> <a href="2"><h4>Awesome Features</h4></a> </li>
+										<li> <a href="2"><h4>Clean Interface</h4></a> </li>
+										<li> <a href="2"><h4>Available Possiblities</h4></a> </li>
+										<li> <a href="2"><h4>Responsive Design</h4></a> </li>
+										<li> <a href="2"><h4>Pixel Perfect Graphics</h4></a> </li>
+										
+									</ul>
+								</div>
+								<div class="col-xs-6 col-md-3">
+									<ul>
+										<li> <h3>WIDGET HEADER</h3> </li>
+										<li> <a href="2"><h4>Awesome Features</h4></a> </li>
+										<li> <a href="2"><h4>Clean Interface</h4></a> </li>
+										<li> <a href="2"><h4>Available Possiblities</h4></a> </li>
+										<li> <a href="2"><h4>Responsive Design</h4></a> </li>
+										<li> <a href="2"><h4>Pixel Perfect Graphics</h4></a> </li>
+										
+									</ul>
+								</div>
+								
+						<!-- </div> -->
+					</div>
+				<!-- /.more-link -->
+
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
