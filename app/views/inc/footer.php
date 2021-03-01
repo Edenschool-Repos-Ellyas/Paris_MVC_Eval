@@ -1,5 +1,5 @@
     <footer>
-         <marquee><h1>FOOTERRRR !!!! :D</h1></marquee>
+         <marquee><h1>FOOTERRRR !!!!! :D</h1></marquee>
     </footer>
 
     <!-- Latest compiled and minified JavaScript -->
