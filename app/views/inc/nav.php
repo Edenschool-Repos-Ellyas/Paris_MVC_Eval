@@ -79,7 +79,7 @@
 						<?php endfor; ?>
 			
 						<li class="more">
-							<a>MORE &bigtriangledown;</a>
+							<a>MORE &ThickSpace; <i class="fas fa-chevron-down"></i></a>
 						</li>
 	
 						<div class="more-link hide">
