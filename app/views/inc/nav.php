@@ -5,7 +5,7 @@
 			<div class="col-xs-12 col-md-4">
 				<div class="date-container">
 					<div>
-						<p>&ThinSpace; SUNDAY . 09 AUGUST . 2022</p>
+						<h6>SUNDAY . 09 AUGUST . 2022</h6>
 					</div>
 					<div class="bordure"></div>
 					<div class="social-media">

@@ -9,6 +9,7 @@
 html, body {
 	height: 100%;
 	width: 100%;
+    min-width: 440px;
 	padding: 0;
 	margin: 0;
 	top: 0;
@@ -19,16 +20,31 @@ html, body {
     font-size: 18px !important;
 }
 
-main{
-    height: 100%;
-    width: 90%;
-    margin: 0 auto;
-}
+/* main{
 
-h1, h2, h3, h4, h5, h6{
+} */
+
+h1, h2, h3, h4, h5, h6, a{
     font-family: 'Roboto', sans-serif !important;
     color: #3A3A3A !important;
     text-decoration: none;
+    margin: 0 !important;
+    font-size: 1rem !important;
+}
+h1{
+    font-size: 3rem !important;
+}
+h2{
+    font-size: 2.5rem !important;
+}
+h3{
+    font-size: 2rem !important;
+}
+h4{
+    font-size: 1.5rem !important;
+}
+h5{
+    font-size: 1.1rem !important;
 }
 
 a:hover{
@@ -36,16 +52,10 @@ a:hover{
 }
 
 
-p, a, select {
+p, select, h6 {
     font-family: 'Alegreya Sans', sans-serif;
 	font-size: 1rem !important;
 	color: #A5A5A5 !important;
-}
-a{
-    color: #3A3A3A !important;
-}
-b{
-    width: 100%;
 }
 
 
@@ -200,20 +210,6 @@ ul, ol{
     /* opacity: 0; */
     transition: opacity 1s ease;
 }
-/* .more-link div{
-    display: none;
-}
-.more:hover + .more-link, .more:focus + .more-link, .more-link:hover{
-    width: 100%;
-    opacity: 1;
-}
-.more:hover + .more-link div, .more:focus + .more-link div{
-    display: block;
-} */
-
-/* .more:focus{
-    background-color: red !important;
-} */
 
 .more-link{
     background-color: #fff;
@@ -260,7 +256,127 @@ ul, ol{
 /* END HEADER / NAV*/
 
 
+/* FEATURE TOP */
+/* .top-feature-container{
+    height: 75vh;
+} */
+.top-feature{
+    height: 100%;
+}
+.top-feature > div{
+    height: 100%;
+    margin-bottom: 20px;
+}
+.top-feature .container-fluid{
+    height: 100%;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.top-feature .container-fluid .row{
+    height: 50%;
+}
+.top-feature .container-fluid .row > div{
+    height: 100%;
+    padding: 0 !important;
+}
+.top-feature .container-fluid .row:first-of-type{
+    padding-bottom: 11px;
+}
+.top-feature .container-fluid .row:last-of-type{
+    padding-top: 11px;
+}
+.top-feature img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: unset;
+}
+
+.image-legend{
+    position: relative;
+}
+.legend-container{
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+
+    width: 80%;
+    padding: 10px 20px;
+    background-color: white;
+}
+.legend-cat{
+    display: inline-block;
+    width: auto;
+    height: 40px;
+    padding: 14px 10px;
+    background-color: orangered;
+
+    position: absolute;
+    top: -40px;
+    left: 40px;
+}
+.legend-cat > h6{
+    color: white !important;
+}
+.legend-title{
+    font-size: 1.3rem !important;
+}
+.legend-title, .legend-info{
+    margin: 1rem 0 !important;
+    color: black !important;
+}
+.btn-share{
+    width: 25px;
+    height: 25px;
+    background-color: gray;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-share > i{
+    color: white !important;
+    width: inherit;
+    height: inherit;
+    font-size: 0.6em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.share-comment{
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.share-comment b{
+    color: black !important;
+}
+.share-comment p{
+    margin: 0 10px 0 5px;
+    height: 100%;
+}
+
+/* END FEATURE TOP */
+
+/* DATA-TYPE */
+
+[cat-color=orange]{
+    background-color: orange !important;
+}
+[cat-color=violet]{
+    background-color: darkorchid !important;
+}
+[cat-color=blue]{
+    background-color: cornflowerblue !important;
+}
+
+/* END DATA-TYPE */
 
 
 
@@ -294,7 +410,9 @@ ul, ol{
 .hide{
     display: none;
 }
-
+.media-display{
+    display: block;
+}
 
 
 
@@ -332,6 +450,11 @@ ul, ol{
     .nav-justified>li {
         display: table-cell;
         width: unset !important;
+    }
+}
+@media(max-width: 1630px){
+    .media-display{
+        display: none;
     }
 }
 
