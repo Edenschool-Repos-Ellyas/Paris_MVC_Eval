@@ -347,7 +347,30 @@ ul, ol{
     height: inherit;
     font-size: 0.6em;
 
-}    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.share-comment{
+margin-top: 15px;
+margin-bottom: 15px;
+
+display: flex;
+justify-content: flex-start;
+align-items: center;
+}
+.share-comment b{
+color: black !important;
+}
+.share-comment p{
+margin: 0 10px 0 5px;
+height: 100%;
+}
+
+/* END FEATURE TOP */
+
+
 /* FOOTER */
 footer{
     height: 500px;
@@ -473,42 +496,6 @@ footer .bordure{
 }
 [border-color=blue]{
     border-color: cornflowerblue !important;
-}
-
-/* END DATA-TYPE */
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.share-comment{
-    margin-top: 15px;
-    margin-bottom: 15px;
-
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-.share-comment b{
-    color: black !important;
-}
-.share-comment p{
-    margin: 0 10px 0 5px;
-    height: 100%;
-}
-
-/* END FEATURE TOP */
-
-/* DATA-TYPE */
-
-[cat-color=orange]{
-    background-color: orange !important;
-}
-[cat-color=violet]{
-    background-color: darkorchid !important;
-}
-[cat-color=blue]{
-    background-color: cornflowerblue !important;
 }
 
 /* END DATA-TYPE */
