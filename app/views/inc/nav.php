@@ -79,7 +79,7 @@
 						<?php endfor; ?>
 			
 						<li class="more">
-							<a>MORE &bigtriangledown;</a>
+							<a>MORE &ThickSpace; <i class="fas fa-chevron-down"></i></a>
 						</li>
 	
 						<div class="more-link hide">
@@ -87,45 +87,45 @@
 								<div class="row">
 									<div class="col-xs-12 col-sm-6 col-md-3">
 										<ul>
-											<li> <h3>WIDGET HEADER</h3> </li>
-											<li> <a href="2"><h4>Awesome Features</h4></a> </li>
-											<li> <a href="2"><h4>Clean Interface</h4></a> </li>
-											<li> <a href="2"><h4>Available Possiblities</h4></a> </li>
-											<li> <a href="2"><h4>Responsive Design</h4></a> </li>
-											<li> <a href="2"><h4>Pixel Perfect Graphics</h4></a> </li>
+											<li> <h5>WIDGET HEADER</h5> </li>
+											<li> <a href="2"><h6>Awesome Features</h6></a> </li>
+											<li> <a href="2"><h6>Clean Interface</h6></a> </li>
+											<li> <a href="2"><h6>Available Possiblities</h6></a> </li>
+											<li> <a href="2"><h6>Responsive Design</h6></a> </li>
+											<li> <a href="2"><h6>Pixel Perfect Graphics</h6></a> </li>
 											
 										</ul>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-3">
 										<ul>
-											<li> <h3>WIDGET HEADER</h3> </li>
-											<li> <a href="2"><h4>Awesome Features</h4></a> </li>
-											<li> <a href="2"><h4>Clean Interface</h4></a> </li>
-											<li> <a href="2"><h4>Available Possiblities</h4></a> </li>
-											<li> <a href="2"><h4>Responsive Design</h4></a> </li>
-											<li> <a href="2"><h4>Pixel Perfect Graphics</h4></a> </li>
+											<li> <h5>WIDGET HEADER</h5> </li>
+											<li> <a href="2"><h6>Awesome Features</h6></a> </li>
+											<li> <a href="2"><h6>Clean Interface</h6></a> </li>
+											<li> <a href="2"><h6>Available Possiblities</h6></a> </li>
+											<li> <a href="2"><h6>Responsive Design</h6></a> </li>
+											<li> <a href="2"><h6>Pixel Perfect Graphics</h6></a> </li>
 											
 										</ul>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-3">
 										<ul>
-											<li> <h3>WIDGET HEADER</h3> </li>
-											<li> <a href="2"><h4>Awesome Features</h4></a> </li>
-											<li> <a href="2"><h4>Clean Interface</h4></a> </li>
-											<li> <a href="2"><h4>Available Possiblities</h4></a> </li>
-											<li> <a href="2"><h4>Responsive Design</h4></a> </li>
-											<li> <a href="2"><h4>Pixel Perfect Graphics</h4></a> </li>
+											<li> <h5>WIDGET HEADER</h5> </li>
+											<li> <a href="2"><h6>Awesome Features</h6></a> </li>
+											<li> <a href="2"><h6>Clean Interface</h6></a> </li>
+											<li> <a href="2"><h6>Available Possiblities</h6></a> </li>
+											<li> <a href="2"><h6>Responsive Design</h6></a> </li>
+											<li> <a href="2"><h6>Pixel Perfect Graphics</h6></a> </li>
 											
 										</ul>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-3">
 										<ul>
-											<li> <h3>WIDGET HEADER</h3> </li>
-											<li> <a href="2"><h4>Awesome Features</h4></a> </li>
-											<li> <a href="2"><h4>Clean Interface</h4></a> </li>
-											<li> <a href="2"><h4>Available Possiblities</h4></a> </li>
-											<li> <a href="2"><h4>Responsive Design</h4></a> </li>
-											<li> <a href="2"><h4>Pixel Perfect Graphics</h4></a> </li>
+											<li> <h5>WIDGET HEADER</h5> </li>
+											<li> <a href="2"><h6>Awesome Features</h6></a> </li>
+											<li> <a href="2"><h6>Clean Interface</h6></a> </li>
+											<li> <a href="2"><h6>Available Possiblities</h6></a> </li>
+											<li> <a href="2"><h6>Responsive Design</h6></a> </li>
+											<li> <a href="2"><h6>Pixel Perfect Graphics</h6></a> </li>
 											
 										</ul>
 									</div>
