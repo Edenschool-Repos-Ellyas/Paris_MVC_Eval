@@ -469,7 +469,7 @@ footer .bordure{
 /* DATA-TYPE */
 
 [cat-color=orange]{
-    background-color: orange !important;
+    background-color: orangered !important;
 }
 [cat-color=violet]{
     background-color: darkorchid !important;
@@ -479,7 +479,7 @@ footer .bordure{
 }
 
 [font-color=orange]{
-    color: orange !important;
+    color: orangered !important;
 }
 [font-color=violet]{
     color: darkorchid !important;
@@ -489,7 +489,7 @@ footer .bordure{
 }
 
 [border-color=orange]{
-    border-color: orange !important;
+    border-color: orangered !important;
 }
 [border-color=violet]{
     border-color: darkorchid !important;

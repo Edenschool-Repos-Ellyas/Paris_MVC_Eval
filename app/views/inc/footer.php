@@ -7,7 +7,7 @@
                      <h3><span font-color="orange">SIGN UP</span> FOR THE LATEST NEWS</h3>
 
                      <form action="" method="post" class="form-news">
-                        <input type="mail" name="news_mail" id="news_mail">
+                        <input type="email" name="news_mail" id="news_mail">
                         <input type="submit" value="SIGN UP" class="btn" cat-color="orange">
                      </form>
 
