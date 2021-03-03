@@ -46,23 +46,37 @@ class Article {
         return $this->db->fetchAll();
     }
 
-    public function findAllArticlesByFilter($filter) 
+    public function findAllArticlesByCategory($category) 
     {
-        $this->db->query('SELECT * FROM tbl_articles WHERE type = :filter');
-        $this->db->bind(':filter', $filter);
+        $this->db->query('SELECT * FROM articles WHERE cat_id = :cat_id');
+        $this->db->bind(':cat_id', $category->cat_id);
         return $this->db->fetchAll();
     }
 
     public function findAllArticlesByUsersId($user_id) 
     {
-        $this->db->query('SELECT * FROM tbl_articles WHERE user_id = :user_id');
+        $this->db->query('SELECT * FROM articles WHERE user_id = :user_id');
         $this->db->bind(':user_id', $user_id);
         return $this->db->fetchAll();
     }
 
+    public function findArticleById($id)
+    {
+        $this->db->query('SELECT * FROM articles WHERE art_id = :art_id');
+        $this->db->bind(':art_id', $id);
+        return $this->db->fetch();
+    }
+
+    public function findCategoryById($id)
+    {
+        $this->db->query('SELECT * FROM categories WHERE cat_id = :cat_id');
+        $this->db->bind(':cat_id', $id);
+        return $this->db->fetch();
+    }
+
     public function addArticle($data)
     {
-        $this->db->query('INSERT INTO tbl_articles (user_id, article_name, type, color, size, price) VALUES (:user_id, :article_name, :type, :color, :size, :price)');
+        $this->db->query('INSERT INTO articles (user_id, article_name, type, color, size, price) VALUES (:user_id, :article_name, :type, :color, :size, :price)');
         $this->db->bind(':user_id', $data['user_id']);
         $this->db->bind(':article_name', $data['article_name']);
         $this->db->bind(':type', $data['type']);
@@ -77,16 +91,9 @@ class Article {
         }
     }
 
-    public function findArticleById($id)
-    {
-        $this->db->query('SELECT * FROM articles WHERE art_id = :art_id');
-        $this->db->bind(':art_id', $id);
-        return $this->db->fetch();
-    }
-
     public function updateArticle($data)
     {
-        $this->db->query('UPDATE tbl_articles SET article_name = :article_name, type = :type, color = :color, size = :size, price = :price WHERE id_article = :id_article');
+        $this->db->query('UPDATE articles SET article_name = :article_name, type = :type, color = :color, size = :size, price = :price WHERE id_article = :id_article');
         $this->db->bind(':article_name', $data['article_name']);
         $this->db->bind(':type', $data['type']);
         $this->db->bind(':color', $data['color']);
@@ -103,7 +110,7 @@ class Article {
 
     public function deleteArticle($id) 
     {
-        $this->db->query('DELETE FROM tbl_articles WHERE id_article = :id');
+        $this->db->query('DELETE FROM articles WHERE id_article = :id');
         $this->db->bind(':id', $id);
 
         if ($this->db->execute()) {

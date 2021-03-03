@@ -35,6 +35,26 @@ class Articles extends Controller {
         $this->render('articles/index', $data);
     }
 
+    public function categories(){
+        $categories = $this->articleModel->findAllCategories();
+        $data = [
+            'categories' => $categories,
+        ];
+
+        $this->render('articles/categories', $data);
+    }
+
+    public function category($id){
+        $category = $this->articleModel->findCategoryById($id);
+        $articles = $this->articleModel->findAllArticlesByCategory($category);
+        $data = [
+            'category' => $category,
+            'articles' => $articles
+        ];
+
+        $this->render('articles/category', $data);
+    }
+
     public function filter($filter)
     {   
         if (is_numeric($filter)) {

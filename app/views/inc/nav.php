@@ -33,8 +33,8 @@
 				<div class="login-container pull-right">
 	
 					<div class="login flex flex-right flex-wrap">
-						<?php if(isset($_SESSION['user_id'])) : ?>
-							<a href="<?php echo URL_ROOT; ?>/users/profile">Profil</a>
+						<?php if(isset($_SESSION['user_id']) || isset($_SESSION['firstname'])) : ?>
+							<a href="<?php echo URL_ROOT; ?>/users/profile"><?= ucfirst($_SESSION['firstname']) ?></a>
 							<a href="<?php echo URL_ROOT; ?>/users/logout">Log out</a>
 						<?php else : ?>
 							<a href="<?php echo URL_ROOT; ?>/users/login">
@@ -69,14 +69,24 @@
 				<nav class="top-nav">
 					<ul class="flex flex-wrap flex-center">
 						<li class="">
-							<a href="<?php echo URL_ROOT; ?>/index" gray="true">NEWS</a>
+							<a href="<?= URL_ROOT; ?>/index" gray="true">NEWS</a>
 						</li>
 			
-						<?php for ($i=0; $i <= 4; $i++): ?>
-							<li class="">
-								<a href="<?php echo URL_ROOT; ?>/catogery/cat_<?= $i?>">CAT_<?= $i?></a>
-							</li>
-						<?php endfor; ?>
+						<li class="nav-links-cat">
+							<a href="<?= URL_ROOT; ?>/articles/category/4">MOBILE</a>
+						</li>
+						<li class="nav-links-cat">
+							<a href="<?= URL_ROOT; ?>/articles/category/2">TABLET</a>
+						</li>
+						<li class="nav-links-cat">
+							<a href="<?= URL_ROOT; ?>/articles/category/5">GADGETS</a>
+						</li>
+						<li class="nav-links-cat">
+							<a href="<?= URL_ROOT; ?>/articles/category/3">CAMERA</a>
+						</li>
+						<li class="nav-links-cat">
+							<a href="<?= URL_ROOT; ?>/articles/category/6">DESIGN</a>
+						</li>
 			
 						<li class="more">
 							<a>MORE &ThickSpace; <i class="fas fa-chevron-down"></i></a>
@@ -88,44 +98,44 @@
 									<div class="col-xs-12 col-sm-6 col-md-3">
 										<ul>
 											<li> <h5>WIDGET HEADER</h5> </li>
-											<li> <a href="2"><h6>Awesome Features</h6></a> </li>
-											<li> <a href="2"><h6>Clean Interface</h6></a> </li>
-											<li> <a href="2"><h6>Available Possiblities</h6></a> </li>
-											<li> <a href="2"><h6>Responsive Design</h6></a> </li>
-											<li> <a href="2"><h6>Pixel Perfect Graphics</h6></a> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Awesome Features</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Clean Interface</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Available Possiblities</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Responsive Design</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Pixel Perfect Graphics</a></h6> </li>
 											
 										</ul>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-3">
 										<ul>
 											<li> <h5>WIDGET HEADER</h5> </li>
-											<li> <a href="2"><h6>Awesome Features</h6></a> </li>
-											<li> <a href="2"><h6>Clean Interface</h6></a> </li>
-											<li> <a href="2"><h6>Available Possiblities</h6></a> </li>
-											<li> <a href="2"><h6>Responsive Design</h6></a> </li>
-											<li> <a href="2"><h6>Pixel Perfect Graphics</h6></a> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Awesome Features</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Clean Interface</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Available Possiblities</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Responsive Design</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Pixel Perfect Graphics</a></h6> </li>
 											
 										</ul>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-3">
 										<ul>
 											<li> <h5>WIDGET HEADER</h5> </li>
-											<li> <a href="2"><h6>Awesome Features</h6></a> </li>
-											<li> <a href="2"><h6>Clean Interface</h6></a> </li>
-											<li> <a href="2"><h6>Available Possiblities</h6></a> </li>
-											<li> <a href="2"><h6>Responsive Design</h6></a> </li>
-											<li> <a href="2"><h6>Pixel Perfect Graphics</h6></a> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Awesome Features</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Clean Interface</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Available Possiblities</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Responsive Design</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Pixel Perfect Graphics</a></h6> </li>
 											
 										</ul>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-3">
 										<ul>
 											<li> <h5>WIDGET HEADER</h5> </li>
-											<li> <a href="2"><h6>Awesome Features</h6></a> </li>
-											<li> <a href="2"><h6>Clean Interface</h6></a> </li>
-											<li> <a href="2"><h6>Available Possiblities</h6></a> </li>
-											<li> <a href="2"><h6>Responsive Design</h6></a> </li>
-											<li> <a href="2"><h6>Pixel Perfect Graphics</h6></a> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Awesome Features</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Clean Interface</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Available Possiblities</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Responsive Design</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Pixel Perfect Graphics</a></h6> </li>
 											
 										</ul>
 									</div>

@@ -131,6 +131,7 @@ ul, ol{
 
 .login{
     padding: 5px;
+    justify-content: space-between !important;
 }
 .login a {
     display: inline;
@@ -188,7 +189,11 @@ ul, ol{
 .top-nav > ul{
     position: relative;
     width: 100%;
-    padding: 0 25%;
+    padding: 0 15%;
+}
+
+.nav-links-cat{
+    padding: 0 15px;
 }
 
 .more{
@@ -430,6 +435,11 @@ ul, ol{
 
 
 /* MEDIA QUERIES */
+@media(max-width: 1630px){
+    .media-display{
+        display: none;
+    }
+}
 
 @media(max-width: 1000px){
     body, html{
@@ -456,12 +466,12 @@ ul, ol{
         display: table-cell;
         width: unset !important;
     }
-}
-@media(max-width: 1630px){
-    .media-display{
-        display: none;
+    .nav-image-center{
+        margin: 0 !important;
     }
+
 }
+
 
 
 
