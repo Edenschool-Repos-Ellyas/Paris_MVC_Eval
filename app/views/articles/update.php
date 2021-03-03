@@ -5,32 +5,32 @@
 </div>
 
 <div class="container center">
-    <h1>Update mobilier</h1>
+    <h1>Update article</h1>
 
-    <form action="<?php echo URL_ROOT; ?>/mobiliers/update/<?php echo $data['mobilier']->id_mobilier ?>" method="POST">
+    <form action="<?php echo URL_ROOT; ?>/articles/update/<?php echo $data['article']->id_article ?>" method="POST">
 
         <div class="form-item">
-            <input type="text" name="mobilier_name" value="<?php echo $data['mobilier']->mobilier_name ?>">
-            <span class="invalidFeedback"><?php echo $data['mobilier_nameError']; ?></span>
+            <input type="text" name="article_name" value="<?php echo $data['article']->article_name ?>">
+            <span class="invalidFeedback"><?php echo $data['article_nameError']; ?></span>
         </div>
 
         <div class="form-item">
-            <input type="text" name="type" value="<?php echo $data['mobilier']->type ?>">
+            <input type="text" name="type" value="<?php echo $data['article']->type ?>">
             <span class="invalidFeedback"><?php echo $data['typeError']; ?></span>
         </div>
 
         <div class="form-item">
-            <input type="text" name="color" value="<?php echo $data['mobilier']->color ?>">
+            <input type="text" name="color" value="<?php echo $data['article']->color ?>">
             <span class="invalidFeedback"><?php echo $data['colorError']; ?></span>
         </div>
 
         <div class="form-item">
-            <input type="text" name="size" value="<?php echo $data['mobilier']->size ?>">
+            <input type="text" name="size" value="<?php echo $data['article']->size ?>">
             <span class="invalidFeedback"><?php echo $data['sizeError']; ?></span>
         </div>
 
         <div class="form-item">
-            <input type="number" name="price" value="<?php echo $data['mobilier']->price ?>">
+            <input type="number" name="price" value="<?php echo $data['article']->price ?>">
             <span class="invalidFeedback"><?php echo $data['priceError']; ?></span>
         </div>
 

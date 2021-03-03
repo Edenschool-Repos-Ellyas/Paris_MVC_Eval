@@ -8,11 +8,11 @@ require APP_ROOT . '/views/inc/head.php';
 </div>
 
 <div class="container center">
-    <h1>Crée un mobilier</h1>
+    <h1>Crée un article</h1>
 
-    <form method="post" action="<?php echo URL_ROOT; ?>/mobiliers/create">
+    <form method="post" action="<?php echo URL_ROOT; ?>/articles/create">
         <div class="form-item">
-            <input type="text" name="mobilier_name" id="mobilier_name" placeholder="nom du mobilier">
+            <input type="text" name="article_name" id="article_name" placeholder="nom du article">
         </div>
 
         <div class="form-item">

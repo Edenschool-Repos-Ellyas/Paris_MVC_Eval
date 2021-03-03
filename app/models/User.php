@@ -13,7 +13,7 @@ class User
 
     public function login($email, $password)
     {
-        $this->db->query('SELECT * FROM tbl_users WHERE email = :email');
+        $this->db->query('SELECT * FROM users WHERE email = :email');
         $this->db->bind(':email', $email);
         $row = $this->db->fetch();
         $hashedPassword = $row->password;
@@ -27,8 +27,9 @@ class User
 
     public function register($data)
     {
-        $this->db->query('INSERT INTO tbl_users (username, email, password) VALUES (:username, :email, :password)');
-        $this->db->bind(':username', $data['username']);
+        $this->db->query('INSERT INTO users (firstname, lastname, email, password) VALUES (:firstname, :lastname, :email, :password)');
+        $this->db->bind(':firstname', $data['firstname']);
+        $this->db->bind(':lastname', $data['lastname']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':password', $data['password']);
 
@@ -41,7 +42,7 @@ class User
 
     public function findUserByEmail($email)
     {
-        $this->db->query('SELECT * FROM tbl_users WHERE email = :email');
+        $this->db->query('SELECT * FROM users WHERE email = :email');
         $this->db->bind(':email', $email);
 
         if($this->db->rowCount() > 0){
@@ -53,7 +54,7 @@ class User
 
     public function findUserById($id)
     {
-        $this->db->query("SELECT * FROM tbl_users WHERE user_id = :user_id");
+        $this->db->query("SELECT * FROM users WHERE user_id = :user_id");
         $this->db->bind(":user_id", $id);
 
         return $this->db->fetch();
@@ -61,20 +62,16 @@ class User
 
     public function updateUser($data)
     {
-        $this->db->query('UPDATE tbl_users SET 
+        $this->db->query('UPDATE users SET 
         username = :username, 
         firstname = :firstname, 
-        lastname = :lastname, 
-        address = :address, 
-        zip_code = :zip_code 
+        lastname = :lastname,
         WHERE user_id = :user_id');
 
         $this->db->bind(':user_id', $data['user']->user_id);
         $this->db->bind(':username', $data['username']);
         $this->db->bind(':firstname', $data['firstname']);
         $this->db->bind(':lastname', $data['lastname']);
-        $this->db->bind(':address', $data['address']);
-        $this->db->bind(':zip_code', $data['zip_code']);
 
         if ($this->db->execute()) {
             return true;

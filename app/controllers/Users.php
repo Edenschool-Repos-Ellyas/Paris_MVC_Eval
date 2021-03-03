@@ -22,7 +22,8 @@ error_reporting(E_ALL);
         {
             $data = [
                 'title' => 'Login page',
-                'username' => '',
+                'firstname' => '',
+                'laststname' => '',
                 'password' => '',
                 'usernameError' => '',
                 'passwordError' => ''
@@ -71,10 +72,12 @@ error_reporting(E_ALL);
         public function register()
         {
             $data = [
-                'username' => '',
+                'firstname' => '',
+                'lastname' => '',
                 'email' => '',
                 'password' => '',
-                'usernameError' => '',
+                'firstnameError' => '',
+                'lastnameError' => '',
                 'emailError' => '',
                 'passwordError' => '',
                 'confirmPassword' => '',
@@ -85,11 +88,13 @@ error_reporting(E_ALL);
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
                 $data = [
-                    'username' => trim($_POST['username']),
+                    'firstname' => trim($_POST['firstname']),
+                    'lastname' => trim($_POST['lastname']),
                     'email' => trim($_POST['email']),
                     'password' => trim($_POST['password']),
                     'confirmPassword' => trim($_POST['confirmPassword']),
-                    'usernameError' => '',
+                    'firstnameError' => '',
+                    'lastnameError' => '',
                     'emailError' => '',
                     'passwordError' => '',
                     'confirmPasswordError' => ''
@@ -125,7 +130,7 @@ error_reporting(E_ALL);
                     }
                 }
 
-                if(empty($data['usernameError']) && empty($data['emailError']) && empty($data['passwordError']) && empty($data['confirmPasswordError'])){
+                if(empty($data['firstnameError']) && empty($data['lastnameError']) && empty($data['emailError']) && empty($data['passwordError']) && empty($data['confirmPasswordError'])){
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
                     if($this->userModel->register($data)){
@@ -141,7 +146,8 @@ error_reporting(E_ALL);
         public function createUserSession($loggedInUser)
         {
             $_SESSION['user_id'] = $loggedInUser->user_id;
-            $_SESSION['username'] = $loggedInUser->username;
+            $_SESSION['firstname'] = $loggedInUser->firstname;
+            $_SESSION['lastname'] = $loggedInUser->lastname;
             $_SESSION['email'] = $loggedInUser->email;
             header('Location: '.URL_ROOT.'/index');
         }
@@ -149,13 +155,15 @@ error_reporting(E_ALL);
         public function logout()
         {
             unset($_SESSION['user_id']);
-            unset($_SESSION['username']);
+            unset($_SESSION['firstname']);
+            unset($_SESSION['lastname']);
             unset($_SESSION['email']);
             header('Location: '.URL_ROOT.'/users/login');
         }
 
         public function profile()
         {
+            // mettre un paramettre id pour chercher un profil avec l'id du profile
             $user = $this->userModel->findUserById($_SESSION["user_id"]);
 
             if(!isLoggedIn()) {
@@ -164,12 +172,12 @@ error_reporting(E_ALL);
             
             $data = [
                 'user' => $user,
-                'username' => '',
                 'firstname' => '',
                 'lastname' => '',
                 'address' => '',
                 'zip_code' => '',
-                'usernameError' => '',
+                'firstnameError' => '',
+                'lastnameError' => ''
             ];
 
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -178,20 +186,22 @@ error_reporting(E_ALL);
                 
                 $data = [
                     'user' => $user,
-                    'username' => trim($_POST["username"]),
                     'firstname' => trim($_POST["firstname"]),
                     'lastname' => trim($_POST["lastname"]),
                     'address' => trim($_POST["address"]),
                     'zip_code' => trim($_POST["zip_code"]),
-                    'usernameError' => '',
+                    'firstnameError' => '',
+                    'lastnameError' => ''
+
                 ];
                 
                 
-                if(empty($data['username'])) {
-                    $data['usernameError'] = 'The username cannot be empty';
+                if(empty($data['firstname']) && empty($data['lastname'])) {
+                    $data['firstnameError'] = 'The firstname cannot be empty';
+                    $data['lastnameError'] = 'The lastname cannot be empty';
                 }
 
-                if (empty($data['usernameError'])) {
+                if (empty($data['firstnameError']) && empty($data['lastnameError'])) {
                     if ($this->userModel->updateUser($data)) {
                         header("Location: " . URL_ROOT . "/users/profile");
                     } else {

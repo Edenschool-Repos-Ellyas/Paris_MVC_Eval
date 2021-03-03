@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Class Mobilier
+ * Class Article
  * Gère la logique métier pour les articles
  */
-class Mobilier {
+class Article {
     /**
      * @var Database $db
      */
@@ -22,21 +22,21 @@ class Mobilier {
      * @return mixed
      * Récupère tous les articles en bdd
      */
-    public function findAllMobiliers() 
+    public function findAllArticles() 
     {
-        $this->db->query('SELECT * FROM tbl_mobiliers');
+        $this->db->query('SELECT * FROM articles');
         return $this->db->fetchAll();
     }
 
-    public function findAllTypes() 
+    public function findAllCategories() 
     {
-        $this->db->query('SELECT DISTINCT type FROM tbl_mobiliers');
+        $this->db->query('SELECT DISTINCT * FROM categories');
         return $this->db->fetchAll();
     }
 
     public function findAllUsers() 
     {
-        $this->db->query('SELECT user_id, username FROM tbl_users');
+        $this->db->query('SELECT firstname FROM users');
 
         "SELECT id, prenom, nom, utilisateur_id
         FROM utilisateur
@@ -46,25 +46,25 @@ class Mobilier {
         return $this->db->fetchAll();
     }
 
-    public function findAllMobiliersByFilter($filter) 
+    public function findAllArticlesByFilter($filter) 
     {
-        $this->db->query('SELECT * FROM tbl_mobiliers WHERE type = :filter');
+        $this->db->query('SELECT * FROM tbl_articles WHERE type = :filter');
         $this->db->bind(':filter', $filter);
         return $this->db->fetchAll();
     }
 
-    public function findAllMobiliersByUsersId($user_id) 
+    public function findAllArticlesByUsersId($user_id) 
     {
-        $this->db->query('SELECT * FROM tbl_mobiliers WHERE user_id = :user_id');
+        $this->db->query('SELECT * FROM tbl_articles WHERE user_id = :user_id');
         $this->db->bind(':user_id', $user_id);
         return $this->db->fetchAll();
     }
 
-    public function addMobilier($data)
+    public function addArticle($data)
     {
-        $this->db->query('INSERT INTO tbl_mobiliers (user_id, mobilier_name, type, color, size, price) VALUES (:user_id, :mobilier_name, :type, :color, :size, :price)');
+        $this->db->query('INSERT INTO tbl_articles (user_id, article_name, type, color, size, price) VALUES (:user_id, :article_name, :type, :color, :size, :price)');
         $this->db->bind(':user_id', $data['user_id']);
-        $this->db->bind(':mobilier_name', $data['mobilier_name']);
+        $this->db->bind(':article_name', $data['article_name']);
         $this->db->bind(':type', $data['type']);
         $this->db->bind(':color', $data['color']);
         $this->db->bind(':size', $data['size']);
@@ -77,22 +77,22 @@ class Mobilier {
         }
     }
 
-    public function findMobilierById($id)
+    public function findArticleById($id)
     {
-        $this->db->query('SELECT * FROM tbl_mobiliers WHERE id_mobilier = :id_mobilier');
-        $this->db->bind(':id_mobilier', $id);
+        $this->db->query('SELECT * FROM articles WHERE art_id = :art_id');
+        $this->db->bind(':art_id', $id);
         return $this->db->fetch();
     }
 
-    public function updateMobilier($data)
+    public function updateArticle($data)
     {
-        $this->db->query('UPDATE tbl_mobiliers SET mobilier_name = :mobilier_name, type = :type, color = :color, size = :size, price = :price WHERE id_mobilier = :id_mobilier');
-        $this->db->bind(':mobilier_name', $data['mobilier_name']);
+        $this->db->query('UPDATE tbl_articles SET article_name = :article_name, type = :type, color = :color, size = :size, price = :price WHERE id_article = :id_article');
+        $this->db->bind(':article_name', $data['article_name']);
         $this->db->bind(':type', $data['type']);
         $this->db->bind(':color', $data['color']);
         $this->db->bind(':size', $data['size']);
         $this->db->bind(':price', $data['price']);
-        $this->db->bind(':id_mobilier', $data['id_mobilier']);
+        $this->db->bind(':id_article', $data['id_article']);
 
         if ($this->db->execute()) {
             return true;
@@ -101,9 +101,9 @@ class Mobilier {
         }
     }
 
-    public function deleteMobilier($id) 
+    public function deleteArticle($id) 
     {
-        $this->db->query('DELETE FROM tbl_mobiliers WHERE id_mobilier = :id');
+        $this->db->query('DELETE FROM tbl_articles WHERE id_article = :id');
         $this->db->bind(':id', $id);
 
         if ($this->db->execute()) {
@@ -113,18 +113,18 @@ class Mobilier {
         }
     }
 
-    public function findAllCommentsOfMobilier($id) 
+    public function findAllCommentsOfArticle($id) 
     {
-        $this->db->query('SELECT * FROM tbl_comments JOIN tbl_users ON tbl_comments.id_user = tbl_users.user_id WHERE mobilier_id = :id ORDER BY comment_created_at DESC');
+        $this->db->query('SELECT * FROM comments JOIN users ON comments.user_id = users.user_id WHERE art_id = :id ORDER BY comments.created_at DESC');
         $this->db->bind(":id", $id);
         return $this->db->fetchAll();
     }
 
     public function addComment($data)
     {
-        $this->db->query('INSERT INTO tbl_comments (id_user, mobilier_id, text_content) VALUES (:id_user, :mobilier_id, :text_content)');
+        $this->db->query('INSERT INTO tbl_comments (id_user, article_id, text_content) VALUES (:id_user, :article_id, :text_content)');
         $this->db->bind(':id_user', $data['user_id']);
-        $this->db->bind(':mobilier_id', $data['mobilier_id']);
+        $this->db->bind(':article_id', $data['article_id']);
         $this->db->bind(':text_content', $data['text_content']);
 
         if ($this->db->execute()){
