@@ -141,7 +141,7 @@ $authors = $categoriesHelpers->helperFindUsersByRole("author");
 								<?php foreach ($authors as $author): ?>
 								
 								<h5>
-									<a href="<?= URL_ROOT; ?>/articles/users/profile/<?= $author->user_id ?>"><?= strtoupper($author->firstname) ?></a>
+									<a href="<?= URL_ROOT; ?>/users/profile/<?= $author->user_id ?>"><?= strtoupper($author->firstname) ?></a>
 								</h5> 
 
 								<?php endforeach; ?>

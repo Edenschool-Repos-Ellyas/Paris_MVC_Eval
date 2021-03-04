@@ -163,13 +163,17 @@ error_reporting(E_ALL);
             header('Location: '.URL_ROOT.'/users/login');
         }
 
-        public function profile()
+        public function profile($id)
         {
-            // mettre un paramettre id pour chercher un profil avec l'id du profile
-            $user = $this->userModel->findUserById($_SESSION["user_id"]);
+            if (!empty($id)) {
+                // si l'id n'est pas vide
+                $user = $this->userModel->findUserById($id);
+            }else{
+                if(!isLoggedIn()) {
+                    header("Location: " . URL_ROOT . "/users/login");
+                }
 
-            if(!isLoggedIn()) {
-                header("Location: " . URL_ROOT . "/users/login");
+                $user = $this->userModel->findUserById($_SESSION["user_id"]);
             }
             
             $data = [
