@@ -15,6 +15,7 @@ class Articles extends Controller {
      */
     public function __construct() {
         $this->articleModel = $this->loadModel('Article');
+        $this->categories = $this->articleModel->findAllCategories();
     }
 
     /**
@@ -24,14 +25,13 @@ class Articles extends Controller {
         $articles = $this->articleModel->findAllArticles();
 
         // changer pour afficher les catégories
-        $categories = $this->articleModel->findAllCategories();
         $users = $this->articleModel->findAllUsers();
         $data = [
             'articles' => $articles,
-            'categories' => $categories,
             'users' => $users,
         ];
 
+        $data["categories"] = $this->categories;
         $this->render('articles/index', $data);
     }
 
@@ -51,7 +51,9 @@ class Articles extends Controller {
             'category' => $category,
             'articles' => $articles
         ];
-
+        
+        
+        $data["categories"] = $this->categories;
         $this->render('articles/category', $data);
     }
 
@@ -70,6 +72,7 @@ class Articles extends Controller {
             'types' => $types,
             'users' => $users,
         ];
+        $data["categories"] = $this->categories;
         $this->render('articles/filter', $data);
     }
 
@@ -133,9 +136,11 @@ class Articles extends Controller {
                     die("Quelque chose c'est mal passé ! Réessayer");
                 }
             } else {
+                $data["categories"] = $this->categories;
                 $this->render('articles/create', $data);
             }
         }
+        $data["categories"] = $this->categories;
         $this->render('articles/create', $data);
     }
     
@@ -225,10 +230,12 @@ class Articles extends Controller {
                     die("Something went wrong, please try again!");
                 }
             } else {
+                $data["categories"] = $this->categories;
                 $this->render('articles/update', $data);
             }
         }
 
+        $data["categories"] = $this->categories;
         $this->render('articles/update', $data);
     }
     
@@ -293,7 +300,7 @@ class Articles extends Controller {
         }
 
         
-
+        $data["categories"] = $this->categories;
         $this->render('articles/show', $data);
     }
 	

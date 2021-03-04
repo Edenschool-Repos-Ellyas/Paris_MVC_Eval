@@ -28,11 +28,16 @@ class Article {
         return $this->db->fetchAll();
     }
 
+    /**
+     * @return mixed
+     * Récupère toutes les categories en bdd
+     */
     public function findAllCategories() 
     {
         $this->db->query('SELECT DISTINCT * FROM categories');
         return $this->db->fetchAll();
     }
+    
 
     public function findAllUsers() 
     {

@@ -1,3 +1,7 @@
+<?php
+$categoriesHelpers = new CategoriesHelper();
+$categories = $categoriesHelpers->helperFindAllCategories();
+?>
 <header>
 	<div class="container">
 		<div class="row">
@@ -69,24 +73,16 @@
 				<nav class="top-nav">
 					<ul class="flex flex-wrap flex-center">
 						<li class="">
-							<a href="<?= URL_ROOT; ?>/index" gray="true">NEWS</a>
+							<a href="<?= URL_ROOT; ?>" gray="true">NEWS</a>
 						</li>
-			
+							
+						<?php foreach ($categories as $category): ?>
+
 						<li class="nav-links-cat">
-							<a href="<?= URL_ROOT; ?>/articles/category/4">MOBILE</a>
+							<a href="<?= URL_ROOT; ?>/articles/category/<?= $category->cat_id ?>"><?= strtoupper($category->cat_name) ?></a>
 						</li>
-						<li class="nav-links-cat">
-							<a href="<?= URL_ROOT; ?>/articles/category/2">TABLET</a>
-						</li>
-						<li class="nav-links-cat">
-							<a href="<?= URL_ROOT; ?>/articles/category/5">GADGETS</a>
-						</li>
-						<li class="nav-links-cat">
-							<a href="<?= URL_ROOT; ?>/articles/category/3">CAMERA</a>
-						</li>
-						<li class="nav-links-cat">
-							<a href="<?= URL_ROOT; ?>/articles/category/6">DESIGN</a>
-						</li>
+
+						<?php endforeach; ?>
 			
 						<li class="more">
 							<a>MORE &ThickSpace; <i class="fas fa-chevron-down"></i></a>
