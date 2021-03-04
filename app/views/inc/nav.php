@@ -131,7 +131,7 @@ $authors = $categoriesHelpers->helperFindUsersByRole("author");
 									<?php endforeach; ?>
 									
 								</div>
-							<!-- </div> -->
+							<!-- </div>  -->
 						</div>
 
 					<!-- /.more-link -->
