@@ -161,7 +161,7 @@
                  <h6>TECH NEWS MAGAZINE</h6>
              </div>
          </div>
-         <!-- ./footer-border -->
+         <!-- ./footer-border ! -->
     </footer>
 
     <!-- Latest compiled and minified JavaScript -->
