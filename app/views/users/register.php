@@ -1,12 +1,7 @@
 <?php
 require APP_ROOT . '/views/inc/head.php';
+require APP_ROOT . '/views/inc/nav.php';
 ?>
-
-<div class="navbar">
-    <?php
-    require APP_ROOT . '/views/inc/nav.php';
-    ?>
-</div>
 
 <div class="container-login">
     <div class="wrapper-login">
@@ -17,9 +12,14 @@ require APP_ROOT . '/views/inc/head.php';
             method="POST"
             action="<?php echo URL_ROOT; ?>/users/register"
         >
-            <input type="text" placeholder="Username *" name="username">
+            <input type="text" placeholder="Firstname *" name="firstname">
             <span class="invalidFeedback">
-                <?php echo $data['usernameError']; ?>
+                <?php echo $data['firstnameError']; ?>
+            </span>
+
+            <input type="text" placeholder="Lastname *" name="lastname">
+            <span class="invalidFeedback">
+                <?php echo $data['lastnameError']; ?>
             </span>
 
             <input type="email" placeholder="Email *" name="email">
@@ -43,3 +43,8 @@ require APP_ROOT . '/views/inc/head.php';
         </form>
     </div>
 </div>
+
+
+<?php
+require APP_ROOT . '/views/inc/footer.php';
+?>

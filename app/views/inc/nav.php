@@ -1,3 +1,8 @@
+<?php
+$categoriesHelpers = new NavHelper();
+$categories = $categoriesHelpers->helperFindAllCategories();
+$authors = $categoriesHelpers->helperFindUsersByRole("author");
+?>
 <header>
 	<div class="container">
 		<div class="row">
@@ -24,7 +29,7 @@
 	
 			
 			<div class="col-xs-12 col-md-4 nav-image-center">
-				<img src="<?= URL_ROOT ?>/public/img/img_site/logo-omega_200x200.png" alt="Tech NewsLogo" class="img-fluid">
+				<a href="<?= URL_ROOT ?>"><img src="<?= URL_ROOT ?>/public/img/img_site/logo-omega_200x200.png" alt="Tech NewsLogo" class="img-fluid"></aha>
 			</div>
 			<!-- Block du millieu -->
 	
@@ -33,8 +38,8 @@
 				<div class="login-container pull-right">
 	
 					<div class="login flex flex-right flex-wrap">
-						<?php if(isset($_SESSION['user_id'])) : ?>
-							<a href="<?php echo URL_ROOT; ?>/users/profile">Profil</a>
+						<?php if(isset($_SESSION['user_id']) || isset($_SESSION['firstname'])) : ?>
+							<a href="<?php echo URL_ROOT; ?>/users/profile"><?= ucfirst($_SESSION['firstname']) ?></a>
 							<a href="<?php echo URL_ROOT; ?>/users/logout">Log out</a>
 						<?php else : ?>
 							<a href="<?php echo URL_ROOT; ?>/users/login">
@@ -56,6 +61,16 @@
 						<input type="search" name="search" id="search" class="">
 						<label for="search"><i class="fas fa-search fa-lg"></i></label>
 					</div>
+
+					<!-- SI JE SUIS UN AUTHHOR OU UN ADMIN -->
+					<!-- JE PEUX CREER UN ARTICLE -->
+					<?php if(isAuthor() || isAdmin()): ?>
+
+					<div class="flex flex-right">
+						<a href="<?= URL_ROOT ?>/articles/create">Créer Article</a>
+					</div>
+
+					<?php endif; ?>
 	
 				</div>
 			</div>
@@ -68,69 +83,71 @@
 			<div class="col-xs-12 col-md-12">
 				<nav class="top-nav">
 					<ul class="flex flex-wrap flex-center">
+
 						<li class="">
-							<a href="<?php echo URL_ROOT; ?>/index" gray="true">NEWS</a>
+							<a href="<?= URL_ROOT; ?>" gray="true">NEWS</a>
 						</li>
-			
-						<?php for ($i=0; $i <= 4; $i++): ?>
-							<li class="">
-								<a href="<?php echo URL_ROOT; ?>/catogery/cat_<?= $i?>">CAT_<?= $i?></a>
-							</li>
-						<?php endfor; ?>
-			
+
 						<li class="more">
-							<a>MORE &ThickSpace; <i class="fas fa-chevron-down"></i></a>
+							<a>CATÉGORIES&ThickSpace;<i class="fas fa-chevron-down"></i></a>
 						</li>
+
+						<li class="more">
+							<a>AUTHEURS&ThickSpace;<i class="fas fa-chevron-down"></i></a>
+						</li>
+
+						<li class="">
+							<a href="<?= URL_ROOT; ?>/articles/gallery">GALERIE</a>
+						</li>
+
+						<li class="">
+							<a href="<?= URL_ROOT; ?>/pages/contact">CONTACT</a>
+						</li>
+
 	
 						<div class="more-link hide">
 							<!-- <div class="container"> -->
 								<div class="row">
+									<?php foreach ($categories as $category): ?>
 									<div class="col-xs-12 col-sm-6 col-md-3">
+
+									<!-- <li class="nav-links-cat">
+										
+									</li> -->
 										<ul>
-											<li> <h5>WIDGET HEADER</h5> </li>
-											<li> <a href="2"><h6>Awesome Features</h6></a> </li>
-											<li> <a href="2"><h6>Clean Interface</h6></a> </li>
-											<li> <a href="2"><h6>Available Possiblities</h6></a> </li>
-											<li> <a href="2"><h6>Responsive Design</h6></a> </li>
-											<li> <a href="2"><h6>Pixel Perfect Graphics</h6></a> </li>
+											<li> 
+												<h5>
+												<a href="<?= URL_ROOT; ?>/articles/category/<?= $category->cat_id ?>"><?= strtoupper($category->cat_name) ?></a>
+												</h5> 
+											</li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Clean Interface</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Available Possiblities</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Responsive Design</a></h6> </li>
+											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Pixel Perfect Graphics</a></h6> </li>
 											
 										</ul>
+
 									</div>
-									<div class="col-xs-12 col-sm-6 col-md-3">
-										<ul>
-											<li> <h5>WIDGET HEADER</h5> </li>
-											<li> <a href="2"><h6>Awesome Features</h6></a> </li>
-											<li> <a href="2"><h6>Clean Interface</h6></a> </li>
-											<li> <a href="2"><h6>Available Possiblities</h6></a> </li>
-											<li> <a href="2"><h6>Responsive Design</h6></a> </li>
-											<li> <a href="2"><h6>Pixel Perfect Graphics</h6></a> </li>
-											
-										</ul>
-									</div>
-									<div class="col-xs-12 col-sm-6 col-md-3">
-										<ul>
-											<li> <h5>WIDGET HEADER</h5> </li>
-											<li> <a href="2"><h6>Awesome Features</h6></a> </li>
-											<li> <a href="2"><h6>Clean Interface</h6></a> </li>
-											<li> <a href="2"><h6>Available Possiblities</h6></a> </li>
-											<li> <a href="2"><h6>Responsive Design</h6></a> </li>
-											<li> <a href="2"><h6>Pixel Perfect Graphics</h6></a> </li>
-											
-										</ul>
-									</div>
-									<div class="col-xs-12 col-sm-6 col-md-3">
-										<ul>
-											<li> <h5>WIDGET HEADER</h5> </li>
-											<li> <a href="2"><h6>Awesome Features</h6></a> </li>
-											<li> <a href="2"><h6>Clean Interface</h6></a> </li>
-											<li> <a href="2"><h6>Available Possiblities</h6></a> </li>
-											<li> <a href="2"><h6>Responsive Design</h6></a> </li>
-											<li> <a href="2"><h6>Pixel Perfect Graphics</h6></a> </li>
-											
-										</ul>
-									</div>
+									<?php endforeach; ?>
 									
+								</div>
 							<!-- </div> -->
+						</div>
+
+					<!-- /.more-link -->
+						<div class="more-link hide">
+							<!-- <div class="container"> -->
+							<div class="row">
+								<?php foreach ($authors as $author): ?>
+								
+								<h5>
+									<a href="<?= URL_ROOT; ?>/articles/users/profile/<?= $author->user_id ?>"><?= strtoupper($author->firstname) ?></a>
+								</h5> 
+
+								<?php endforeach; ?>
+									
+									
+							</div>
 						</div>
 					<!-- /.more-link -->
 	

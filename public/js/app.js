@@ -1,9 +1,18 @@
-let more = document.querySelector(".more");
-let more_link = document.querySelector(".more-link");
+let more = document.querySelectorAll(".more");
+let more_link = document.querySelectorAll(".more-link");
 
-more.addEventListener("click", ()=>{
-    more_link.classList.toggle("show");
-    more_link.classList.toggle("hide");
-    console.log(more_link);
-});
-console.log(more);
+
+// creer une fonction d'affichage de la NAV
+
+function dropDownNav(btnNav, linksContainer) {
+    btnNav.addEventListener("click", ()=>{
+        linksContainer.classList.toggle("hide");
+        console.log(linksContainer);
+    });
+}
+
+for (let i = 0; i < more.length; i++) {
+    dropDownNav(more[i], more_link[i]);
+}
+
+
