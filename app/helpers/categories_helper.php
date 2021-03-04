@@ -21,4 +21,12 @@ class CategoriesHelper
         return $this->db->fetchAll();
     }
 
+    public function findUsersByRole($role)
+    {
+        $this->db->query('SELECT * FROM users WHERE role = :role');
+        $this->db->bind(':role', $role);
+
+        return $this->db->fetchAll();
+    }
+
 }

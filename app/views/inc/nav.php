@@ -1,6 +1,7 @@
 <?php
 $categoriesHelpers = new CategoriesHelper();
 $categories = $categoriesHelpers->helperFindAllCategories();
+$authors = $categoriesHelpers->findUsersByRole("author");
 ?>
 <header>
 	<div class="container">
@@ -72,69 +73,51 @@ $categories = $categoriesHelpers->helperFindAllCategories();
 			<div class="col-xs-12 col-md-12">
 				<nav class="top-nav">
 					<ul class="flex flex-wrap flex-center">
+
 						<li class="">
 							<a href="<?= URL_ROOT; ?>" gray="true">NEWS</a>
 						</li>
-							
-						<?php foreach ($categories as $category): ?>
 
-						<li class="nav-links-cat">
-							<a href="<?= URL_ROOT; ?>/articles/category/<?= $category->cat_id ?>"><?= strtoupper($category->cat_name) ?></a>
+						<li class="more">
+							<a>CATÉGORIES&ThickSpace;<i class="fas fa-chevron-down"></i></a>
 						</li>
 
-						<?php endforeach; ?>
-			
-						<li class="more">
-							<a>MORE &ThickSpace; <i class="fas fa-chevron-down"></i></a>
+							<li class="moreeeeeeeCHANGELACLASSE">
+								<a>AUTHEURS&ThickSpace;<i class="fas fa-chevron-down"></i></a>
+							</li>
+							<?php foreach ($authors as $author): ?>
+								<h5>
+									<a href="<?= URL_ROOT; ?>/articles/users/profile/<?= $author->user_id ?>"><?= strtoupper($author->firstname) ?></a>
+								</h5> 
+							<?php endforeach; ?>
+
 						</li>
 	
 						<div class="more-link hide">
 							<!-- <div class="container"> -->
 								<div class="row">
+									<?php foreach ($categories as $category): ?>
 									<div class="col-xs-12 col-sm-6 col-md-3">
+
+									<!-- <li class="nav-links-cat">
+										
+									</li> -->
 										<ul>
-											<li> <h5>WIDGET HEADER</h5> </li>
-											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Awesome Features</a></h6> </li>
+											<li> 
+												<h5>
+												<a href="<?= URL_ROOT; ?>/articles/category/<?= $category->cat_id ?>"><?= strtoupper($category->cat_name) ?></a>
+												</h5> 
+											</li>
 											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Clean Interface</a></h6> </li>
 											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Available Possiblities</a></h6> </li>
 											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Responsive Design</a></h6> </li>
 											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Pixel Perfect Graphics</a></h6> </li>
 											
 										</ul>
+
 									</div>
-									<div class="col-xs-12 col-sm-6 col-md-3">
-										<ul>
-											<li> <h5>WIDGET HEADER</h5> </li>
-											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Awesome Features</a></h6> </li>
-											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Clean Interface</a></h6> </li>
-											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Available Possiblities</a></h6> </li>
-											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Responsive Design</a></h6> </li>
-											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Pixel Perfect Graphics</a></h6> </li>
-											
-										</ul>
-									</div>
-									<div class="col-xs-12 col-sm-6 col-md-3">
-										<ul>
-											<li> <h5>WIDGET HEADER</h5> </li>
-											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Awesome Features</a></h6> </li>
-											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Clean Interface</a></h6> </li>
-											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Available Possiblities</a></h6> </li>
-											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Responsive Design</a></h6> </li>
-											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Pixel Perfect Graphics</a></h6> </li>
-											
-										</ul>
-									</div>
-									<div class="col-xs-12 col-sm-6 col-md-3">
-										<ul>
-											<li> <h5>WIDGET HEADER</h5> </li>
-											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Awesome Features</a></h6> </li>
-											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Clean Interface</a></h6> </li>
-											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Available Possiblities</a></h6> </li>
-											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Responsive Design</a></h6> </li>
-											<li> <h6><a href="<?= URL_ROOT; ?>/articles/categories">Pixel Perfect Graphics</a></h6> </li>
-											
-										</ul>
-									</div>
+									<?php endforeach; ?>
+									
 									
 							<!-- </div> -->
 						</div>

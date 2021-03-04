@@ -52,6 +52,14 @@ class User
         }
     }
 
+    public function findUsersByRole($role)
+    {
+        $this->db->query('SELECT * FROM users WHERE role = :role');
+        $this->db->bind(':role', $role);
+
+        return $this->db->fetchAll();
+    }
+
     public function findUserById($id)
     {
         $this->db->query("SELECT * FROM users WHERE user_id = :user_id");

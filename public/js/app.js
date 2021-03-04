@@ -7,3 +7,5 @@ more.addEventListener("click", ()=>{
     console.log(more_link);
 });
 console.log(more);
+
+// creer une fonction d'affichage de la NAV
