@@ -31,4 +31,13 @@
 			];
 			$this->render('pages/about', $data);
 		}
+		/**
+		 * Page Contact
+		 */
+		public function contact() {
+			$data = [
+				'title' => 'Contact'
+			];
+			$this->render('pages/contact', $data);
+		}
 	}

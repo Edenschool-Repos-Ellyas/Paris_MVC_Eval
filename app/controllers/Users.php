@@ -149,6 +149,7 @@ error_reporting(E_ALL);
             $_SESSION['firstname'] = $loggedInUser->firstname;
             $_SESSION['lastname'] = $loggedInUser->lastname;
             $_SESSION['email'] = $loggedInUser->email;
+            $_SESSION['role'] = $loggedInUser->role;
             header('Location: '.URL_ROOT.'/index');
         }
 
@@ -158,6 +159,7 @@ error_reporting(E_ALL);
             unset($_SESSION['firstname']);
             unset($_SESSION['lastname']);
             unset($_SESSION['email']);
+            unset($_SESSION['role']);
             header('Location: '.URL_ROOT.'/users/login');
         }
 

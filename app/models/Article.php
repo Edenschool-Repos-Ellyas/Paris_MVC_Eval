@@ -81,13 +81,14 @@ class Article {
 
     public function addArticle($data)
     {
-        $this->db->query('INSERT INTO articles (user_id, article_name, type, color, size, price) VALUES (:user_id, :article_name, :type, :color, :size, :price)');
+        $this->db->query('INSERT INTO articles (user_id, cat_id, title, slug, image, description, body) VALUES (:user_id, :cat_id, :title, :slug, :image, :description, :body)');
         $this->db->bind(':user_id', $data['user_id']);
-        $this->db->bind(':article_name', $data['article_name']);
-        $this->db->bind(':type', $data['type']);
-        $this->db->bind(':color', $data['color']);
-        $this->db->bind(':size', $data['size']);
-        $this->db->bind(':price', $data['price']);
+        $this->db->bind(':cat_id', $data['cat_id']);
+        $this->db->bind(':title', $data['title']);
+        $this->db->bind(':slug', $data['slug']);
+        $this->db->bind(':image', $data['image']);
+        $this->db->bind(':description', $data['description']);
+        $this->db->bind(':body', $data['body']);
 
         if ($this->db->execute()) {
             return true;
@@ -98,12 +99,13 @@ class Article {
 
     public function updateArticle($data)
     {
-        $this->db->query('UPDATE articles SET article_name = :article_name, type = :type, color = :color, size = :size, price = :price WHERE id_article = :id_article');
-        $this->db->bind(':article_name', $data['article_name']);
-        $this->db->bind(':type', $data['type']);
-        $this->db->bind(':color', $data['color']);
-        $this->db->bind(':size', $data['size']);
-        $this->db->bind(':price', $data['price']);
+        $this->db->query('UPDATE articles SET cat_id = :cat_id, title = :title, slug = :slug, image = :image, description = :description, body = :body WHERE id_article = :id_article');
+        $this->db->bind(':cat_id', $data['cat_id']);
+        $this->db->bind(':title', $data['title']);
+        $this->db->bind(':slug', $data['slug']);
+        $this->db->bind(':image', $data['image']);
+        $this->db->bind(':description', $data['description']);
+        $this->db->bind(':body', $data['body']);
         $this->db->bind(':id_article', $data['id_article']);
 
         if ($this->db->execute()) {
@@ -134,10 +136,10 @@ class Article {
 
     public function addComment($data)
     {
-        $this->db->query('INSERT INTO tbl_comments (id_user, article_id, text_content) VALUES (:id_user, :article_id, :text_content)');
-        $this->db->bind(':id_user', $data['user_id']);
-        $this->db->bind(':article_id', $data['article_id']);
-        $this->db->bind(':text_content', $data['text_content']);
+        $this->db->query('INSERT INTO comments (user_id, art_id, text) VALUES (:user_id, :art_id, :text)');
+        $this->db->bind(':user_id', $data['user_id']);
+        $this->db->bind(':art_id', $data['art_id']);
+        $this->db->bind(':text', $data['text']);
 
         if ($this->db->execute()){
             return true;

@@ -56,6 +56,15 @@ class Articles extends Controller {
         $data["categories"] = $this->categories;
         $this->render('articles/category', $data);
     }
+    
+    public function gallery()
+    {
+        $articles = $this->articleModel->findAllArticles();
+        $data = [
+            "articles" => $articles
+        ];
+        $this->render('articles/gallery', $data);
+    }
 
     public function filter($filter)
     {   
@@ -65,11 +74,11 @@ class Articles extends Controller {
             $articles = $this->articleModel->findAllArticlesByFilter($filter);
         }
 
-        $types = $this->articleModel->findAllTypes();
+        $slugs = $this->articleModel->findAllTypes();
         $users = $this->articleModel->findAllUsers();
         $data = [
             'articles' => $articles,
-            'types' => $types,
+            'slugs' => $slugs,
             'users' => $users,
         ];
         $data["categories"] = $this->categories;
@@ -79,21 +88,24 @@ class Articles extends Controller {
 	
     public function create()
     {
-        if (!isLoggedIn()) {
+        if (!isLoggedIn() || isUser() || isAnonymous()) {
             header("Location: " . URL_ROOT . '/articles');
         }
 
         $data = [
-            'article_name' => '',
-            'type' => '',
-            'color' => '',
-            'size' => '',
-            'price' => '',
-            'article_nameError' => '',
-            'typeError' => '',
-            'colorError' => '',
-            'sizeError' => '',
-            'priceError' => ''
+            'cat_id' => '',
+            'title' => '',
+            'slug' => '',
+            'image' => '',
+            'description' => '',
+            'body' => '',
+            'cat_idError' => '',
+            'titleError' => '',
+            'slugError' => '',
+            'imageError' => '',
+            'descriptionError' => '',
+            'bodyError' => '',
+            
         ];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -101,35 +113,40 @@ class Articles extends Controller {
 
             $data = [
                 'user_id' => $_SESSION['user_id'],
-                'article_name' => trim($_POST['article_name']),
-                'type' => trim($_POST["type"]),
-                'color' => trim($_POST['color']),
-                'size' => trim($_POST['size']),
-                'price' => trim($_POST['price']),
-                'article_nameError' => '',
-                'typeError' => '',
-                'colorError' => '',
-                'sizeError' => '',
-                'priceError' => ''
+                'cat_id' => trim($_POST["cat_id"]),
+                'title' => trim($_POST["title"]),
+                'slug' => trim($_POST["slug"]),
+                'image' => trim($_POST["image"]),
+                'description' => trim($_POST["description"]),
+                'body' => trim($_POST["body"]),
+                'cat_idError' => '',
+                'titleError' => '',
+                'slugError' => '',
+                'imageError' => '',
+                'descriptionError' => '',
+                'bodyError' => '',
             ];
 
-            if(empty($data['article_name'])) {
-                $data['article_nameError'] = 'The article_name of a article cannot be empty';
+            if(empty($data['cat_id'])) {
+                $data['titleError'] = 'The title of a article cannot be empty';
             }
-            if(empty($data['type'])) {
-                $data['typeError'] = 'The type of a article cannot be empty';
+            if(empty($data['title'])) {
+                $data['titleError'] = 'The title of a article cannot be empty';
             }
-            if(empty($data['color'])) {
-                $data['colorError'] = 'The color of a article cannot be empty';
+            if(empty($data['slug'])) {
+                $data['slugError'] = 'The slug of a article cannot be empty';
             }
-            if(empty($data['size'])) {
-                $data['sizeError'] = 'The size of a article cannot be empty';
+            if(empty($data['image'])) {
+                $data['imageError'] = 'The image of a article cannot be empty';
             }
-            if(empty($data['price'])) {
-                $data['priceError'] = 'The price of a article cannot be empty';
+            if(empty($data['description'])) {
+                $data['descriptionError'] = 'The description of a article cannot be empty';
+            }
+            if(empty($data['body'])) {
+                $data['bodyError'] = 'The body of a article cannot be empty';
             }
 
-            if (empty($data['article_nameError']) && empty($data['colorError']) && empty($data['sizeError']) && empty($data['typeError']) && empty($data['priceError'])) {
+            if (empty($data['cat_idError']) && empty($data['titleError']) && empty($data['imageError']) && empty($data['descriptionError']) && empty($data['slugError']) && empty($data['bodyError'])) {
                 if ($this->articleModel->addArticle($data)) {
                     header("Location: " . URL_ROOT . '/articles');
                 } else {
@@ -160,16 +177,16 @@ class Articles extends Controller {
 
         $data = [
             'article' => $article,
-            'article_name' => '',
-            'type' => '',
-            'color' => '',
-            'size' => '',
-            'price' => '',
-            'article_nameError' => '',
-            'typeError' => '',
-            'colorError' => '',
-            'sizeError' => '',
-            'priceError' => ''
+            'title' => '',
+            'slug' => '',
+            'image' => '',
+            'description' => '',
+            'body' => '',
+            'titleError' => '',
+            'slugError' => '',
+            'imageError' => '',
+            'descriptionError' => '',
+            'bodyError' => ''
         ];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -179,51 +196,51 @@ class Articles extends Controller {
                 'id_article' => $id,
                 'article' => $article,
                 'user_id' => $_SESSION['user_id'],
-                'article_name' => trim($_POST['article_name']),
-                'type' => trim($_POST['type']),
-                'color' => trim($_POST['color']),
-                'size' => trim($_POST['size']),
-                'price' => trim($_POST['price']),
-                'article_nameError' => '',
-                'typeError' => '',
-                'colorError' => '',
-                'sizeError' => '',
-                'priceError' => ''
+                'title' => trim($_POST['title']),
+                'slug' => trim($_POST['slug']),
+                'image' => trim($_POST['image']),
+                'description' => trim($_POST['description']),
+                'body' => trim($_POST['body']),
+                'titleError' => '',
+                'slugError' => '',
+                'imageError' => '',
+                'descriptionError' => '',
+                'bodyError' => ''
             ];
 
-            if(empty($data['article_name'])) {
-                $data['article_nameError'] = 'The article_name of a article cannot be empty';
+            if(empty($data['title'])) {
+                $data['titleError'] = 'The title of a article cannot be empty';
             }
-            if(empty($data['type'])) {
-                $data['typeError'] = 'The type of a article cannot be empty';
+            if(empty($data['slug'])) {
+                $data['slugError'] = 'The slug of a article cannot be empty';
             }
-            if(empty($data['color'])) {
-                $data['colorError'] = 'The color of a article cannot be empty';
+            if(empty($data['image'])) {
+                $data['imageError'] = 'The image of a article cannot be empty';
             }
-            if(empty($data['size'])) {
-                $data['sizeError'] = 'The size of a article cannot be empty';
+            if(empty($data['description'])) {
+                $data['descriptionError'] = 'The description of a article cannot be empty';
             }
-            if(empty($data['price'])) {
-                $data['priceError'] = 'The price of a article cannot be empty';
-            }
-
-            if($data['article_name'] == $this->articleModel->findArticleById($id)->article_name) {
-                $data['article_nameError'] == 'At least change the article_name!';
-            }
-            if($data['type'] == $this->articleModel->findArticleById($id)->type) {
-                $data['typeError'] == 'At least change the type!';
-            }
-            if($data['color'] == $this->articleModel->findArticleById($id)->color) {
-                $data['colorError'] == 'At least change the Color!';
-            }
-            if($data['size'] == $this->articleModel->findArticleById($id)->size) {
-                $data['sizeError'] == 'At least change the Size!';
-            }
-            if($data['price'] == $this->articleModel->findArticleById($id)->price) {
-                $data['priceError'] == 'At least change the price!';
+            if(empty($data['body'])) {
+                $data['bodyError'] = 'The body of a article cannot be empty';
             }
 
-            if (empty($data['article_nameError']) && empty($data['colorError']) && empty($data['sizeError']) && empty($data['priceError']) && empty($data['priceError'])) {
+            if($data['title'] == $this->articleModel->findArticleById($id)->title) {
+                $data['titleError'] == 'At least change the title!';
+            }
+            if($data['slug'] == $this->articleModel->findArticleById($id)->slug) {
+                $data['slugError'] == 'At least change the slug!';
+            }
+            if($data['image'] == $this->articleModel->findArticleById($id)->image) {
+                $data['imageError'] == 'At least change the Color!';
+            }
+            if($data['description'] == $this->articleModel->findArticleById($id)->description) {
+                $data['descriptionError'] == 'At least change the Size!';
+            }
+            if($data['body'] == $this->articleModel->findArticleById($id)->body) {
+                $data['bodyError'] == 'At least change the body!';
+            }
+
+            if (empty($data['titleError']) && empty($data['imageError']) && empty($data['descriptionError']) && empty($data['bodyError']) && empty($data['bodyError'])) {
                 if ($this->articleModel->updateArticle($data)) {
                     header("Location: " . URL_ROOT . "/articles");
                 } else {
@@ -254,10 +271,10 @@ class Articles extends Controller {
 
         $data = [
             'article' => $article,
-            'article_name' => '',
-            'price' => '',
-            'article_nameError' => '',
-            'priceError' => ''
+            'title' => '',
+            'body' => '',
+            'titleError' => '',
+            'bodyError' => ''
         ];
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -287,15 +304,15 @@ class Articles extends Controller {
             $createComment = [
                 'user_id' => $_SESSION["user_id"],
                 "art_id" => $data["article"]->art_id,
-                "body" => trim($_POST["body"])
+                "text" => trim($_POST["text"])
             ];
 
-            if (!empty($createComment["user_id"])) {
+            if (!empty($createComment["user_id"]) && !empty($createComment["text"])) {
                 $this->articleModel->addComment($createComment);
                 // array_push($data, $createComment);
                 header("Location: " . URL_ROOT . "/articles/show/" . $id);
             }
-            unset($_POST["body"]);
+            unset($_POST["text"]);
 
         }
 

@@ -1,7 +1,7 @@
 <?php
-$categoriesHelpers = new CategoriesHelper();
+$categoriesHelpers = new NavHelper();
 $categories = $categoriesHelpers->helperFindAllCategories();
-$authors = $categoriesHelpers->findUsersByRole("author");
+$authors = $categoriesHelpers->helperFindUsersByRole("author");
 ?>
 <header>
 	<div class="container">
@@ -29,7 +29,7 @@ $authors = $categoriesHelpers->findUsersByRole("author");
 	
 			
 			<div class="col-xs-12 col-md-4 nav-image-center">
-				<img src="<?= URL_ROOT ?>/public/img/img_site/logo-omega_200x200.png" alt="Tech NewsLogo" class="img-fluid">
+				<a href="<?= URL_ROOT ?>"><img src="<?= URL_ROOT ?>/public/img/img_site/logo-omega_200x200.png" alt="Tech NewsLogo" class="img-fluid"></aha>
 			</div>
 			<!-- Block du millieu -->
 	
@@ -61,6 +61,16 @@ $authors = $categoriesHelpers->findUsersByRole("author");
 						<input type="search" name="search" id="search" class="">
 						<label for="search"><i class="fas fa-search fa-lg"></i></label>
 					</div>
+
+					<!-- SI JE SUIS UN AUTHHOR OU UN ADMIN -->
+					<!-- JE PEUX CREER UN ARTICLE -->
+					<?php if(isAuthor() || isAdmin()): ?>
+
+					<div class="flex flex-right">
+						<a href="<?= URL_ROOT ?>/articles/create">Créer Article</a>
+					</div>
+
+					<?php endif; ?>
 	
 				</div>
 			</div>
@@ -82,16 +92,18 @@ $authors = $categoriesHelpers->findUsersByRole("author");
 							<a>CATÉGORIES&ThickSpace;<i class="fas fa-chevron-down"></i></a>
 						</li>
 
-							<li class="moreeeeeeeCHANGELACLASSE">
-								<a>AUTHEURS&ThickSpace;<i class="fas fa-chevron-down"></i></a>
-							</li>
-							<?php foreach ($authors as $author): ?>
-								<h5>
-									<a href="<?= URL_ROOT; ?>/articles/users/profile/<?= $author->user_id ?>"><?= strtoupper($author->firstname) ?></a>
-								</h5> 
-							<?php endforeach; ?>
-
+						<li class="more">
+							<a>AUTHEURS&ThickSpace;<i class="fas fa-chevron-down"></i></a>
 						</li>
+
+						<li class="">
+							<a href="<?= URL_ROOT; ?>/articles/gallery">GALERIE</a>
+						</li>
+
+						<li class="">
+							<a href="<?= URL_ROOT; ?>/pages/contact">CONTACT</a>
+						</li>
+
 	
 						<div class="more-link hide">
 							<!-- <div class="container"> -->
@@ -118,8 +130,24 @@ $authors = $categoriesHelpers->findUsersByRole("author");
 									</div>
 									<?php endforeach; ?>
 									
-									
+								</div>
 							<!-- </div> -->
+						</div>
+
+					<!-- /.more-link -->
+						<div class="more-link hide">
+							<!-- <div class="container"> -->
+							<div class="row">
+								<?php foreach ($authors as $author): ?>
+								
+								<h5>
+									<a href="<?= URL_ROOT; ?>/articles/users/profile/<?= $author->user_id ?>"><?= strtoupper($author->firstname) ?></a>
+								</h5> 
+
+								<?php endforeach; ?>
+									
+									
+							</div>
 						</div>
 					<!-- /.more-link -->
 	
