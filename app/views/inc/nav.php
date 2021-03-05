@@ -58,12 +58,19 @@ $authors = $categoriesHelpers->helperFindUsersByRole("author");
 					
 	
 					<div class="search flex flex-right" id="searchContainer">
-						<form method="post"><input type="search" name="search" id="search" class=""></form>
+						<form method="post">
+							<input type="search" name="search" id="search" class="">
+
+							<!-- Container of result of the search -->
+							<div id="search-container">
+								
+							</div>
+						</form>
 						<label for="search"><i class="fas fa-search fa-lg"></i></label>
-					</div>
-					<div id="search-container">
+
 						
-                    </div>
+					</div>
+					
 
 					<!-- SI JE SUIS UN AUTHHOR OU UN ADMIN -->
 					<!-- JE PEUX CREER UN ARTICLE -->

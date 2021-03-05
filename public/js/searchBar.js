@@ -4,7 +4,9 @@ let searchInput = document.getElementById("search");
 searchInput.addEventListener("keyup", getArticleHint);
 
 function getArticleHint(str) {
+    console.log('key up search');
     
+
     str = searchInput.value;
     str = str.trim();
     if(str === '') return;
