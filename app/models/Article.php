@@ -61,10 +61,10 @@ class Article {
         return $this->db->fetchAll();
     }
 
-    public function findAllArticlesByCategory($category) 
+    public function findAllArticlesByCategory($cat_id) 
     {
         $this->db->query('SELECT * FROM articles WHERE cat_id = :cat_id');
-        $this->db->bind(':cat_id', $category->cat_id);
+        $this->db->bind(':cat_id', $cat_id);
         return $this->db->fetchAll();
     }
 
@@ -72,6 +72,20 @@ class Article {
     {
         $this->db->query('SELECT * FROM articles WHERE user_id = :user_id');
         $this->db->bind(':user_id', $user_id);
+        return $this->db->fetchAll();
+    }
+
+    public function findAllArticlesAndTheirAuthor()
+    {
+        $this->db->query('SELECT * FROM articles INNER JOIN users ON articles.user_id = users.user_id');
+
+        return $this->db->fetchAll();
+    }
+
+    public function findAllArticlesAndTheirAuthorByCategory($cat_id)
+    {
+        $this->db->query('SELECT * FROM articles INNER JOIN users ON articles.user_id = users.user_id WHERE cat_id = :cat_id');
+        $this->db->bind(':cat_id', $cat_id);
         return $this->db->fetchAll();
     }
 
@@ -86,6 +100,13 @@ class Article {
     {
         $this->db->query('SELECT * FROM categories WHERE cat_id = :cat_id');
         $this->db->bind(':cat_id', $id);
+        return $this->db->fetch();
+    }
+
+    public function findArticleAuthor($id)
+    {
+        $this->db->query('SELECT * FROM users WHERE user_id = :user_id');
+        $this->db->bind(':user_id', $id);
         return $this->db->fetch();
     }
 

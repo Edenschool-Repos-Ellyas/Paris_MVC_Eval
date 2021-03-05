@@ -46,14 +46,15 @@ class Articles extends Controller {
 
     public function category($id){
         $category = $this->articleModel->findCategoryById($id);
-        $articles = $this->articleModel->findAllArticlesByCategory($category);
+        $articles = $this->articleModel->findAllArticlesAndTheirAuthorByCategory($id);
+        // $articles["author"] = $this->articleModel->findArticleAuthor($id);
         $data = [
             'category' => $category,
-            'articles' => $articles
+            'articles' => $articles,
         ];
         
         
-        $data["categories"] = $this->categories;
+        
         $this->render('articles/category', $data);
     }
     
@@ -179,6 +180,8 @@ class Articles extends Controller {
 
         $data = [
             'article' => $article,
+            'user_id' => '',
+            'cat_id' => '',
             'title' => '',
             'slug' => '',
             'image' => '',
@@ -198,7 +201,7 @@ class Articles extends Controller {
                 'art_id' => $id,
                 'article' => $article,
                 'user_id' => $_SESSION['user_id'],
-                'cat_id' => $_SESSION['cat_id'],
+                'cat_id' => trim($_POST['cat_id']),
                 'title' => trim($_POST['title']),
                 'slug' => trim($_POST['slug']),
                 'image' => trim($_POST['image']),
@@ -245,17 +248,16 @@ class Articles extends Controller {
 
             if (empty($data['titleError']) && empty($data['imageError']) && empty($data['descriptionError']) && empty($data['bodyError']) && empty($data['bodyError'])) {
                 if ($this->articleModel->updateArticle($data)) {
-                    header("Location: " . URL_ROOT . "/articles");
+                    header("Location: " . URL_ROOT . "/articles/show/" . $data["art_id"] );
                 } else {
                     die("Something went wrong, please try again!");
                 }
             } else {
-                $data["categories"] = $this->categories;
+
                 $this->render('articles/update', $data);
             }
         }
 
-        $data["categories"] = $this->categories;
         $this->render('articles/update', $data);
     }
     
@@ -294,10 +296,14 @@ class Articles extends Controller {
     public function show($id)
     {
         $article = $this->articleModel->findArticleById($id);
+        $author = $this->articleModel->findArticleAuthor($article->user_id);
+        $category = $this->articleModel->findCategoryById($article->cat_id);
         $comments = $this->articleModel->findAllCommentsOfArticle($article->art_id);
 
         $data = [
             'article' => $article,
+            'author' => $author,
+            'category' => $category,
             'comments' => $comments,
         ];
 
@@ -320,7 +326,6 @@ class Articles extends Controller {
         }
 
         
-        $data["categories"] = $this->categories;
         $this->render('articles/show', $data);
     }
 	

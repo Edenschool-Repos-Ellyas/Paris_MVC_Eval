@@ -15,8 +15,10 @@
 			<div class="show">
 				<h1><?= $data["article"]->title ?></h1>
 				<p> description : <b> <?= $data["article"]->description ?> </b></p>
-				<p>Contenu : <b> <?= $data["article"]->body ?>² </b></p>
-				<p>crée le  : <b> <?= $data["article"]->created_at ?>€ </b></p>
+				<p>Contenu : <b> <?= $data["article"]->body ?> </b></p>
+				<p>crée le  : <b> <?= $data["article"]->created_at ?> </b></p>
+				<p>fait par  : <b> <?= $data["author"]->firstname . " " . $data["author"]->lastname ?> </b></p>
+				<p>categorie  : <b> <?= $data["category"]->cat_name ?> </b></p>
 			</div>
 
 			<div class="container center">
