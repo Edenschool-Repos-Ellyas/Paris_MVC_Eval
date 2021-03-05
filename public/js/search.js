@@ -1,20 +1,19 @@
-let searchInput = document.getElementById("search");
-// let searchInput = document.getElementById("searchContainer");
+const searchInput = document.getElementById("search");
 
-searchInput.addEventListener("keyup", getArticleHint);
+search.addEventListener("keyup", getArticleHint);
 
 function getArticleHint(str) {
     
     str = searchInput.value;
     str = str.trim();
-    if(str === '') return;
+    if(str === "") return;
 
     let xhr = new XMLHttpRequest();
     xhr.responseType = "json";
-    
-    xhr.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200){
 
+    xhr.onreadystatechange = () => {
+        if (this.readyState === 4 && this.status === 200) {
+            
             let articles = this.response;
             let resultContainer = document.getElementById("search-container");
             let html = "";
@@ -30,11 +29,9 @@ function getArticleHint(str) {
             });
 
             resultContainer.innerHTML = html;
-
         }
     }
 
-    // xhr.open("GET", "./app/ajax/searchBar.php&q=" + str);
     xhr.open("GET", "http://localhost/Paris_MVC_Eval/ajaxs/hintAjax/" + str);
     xhr.send();
 }
