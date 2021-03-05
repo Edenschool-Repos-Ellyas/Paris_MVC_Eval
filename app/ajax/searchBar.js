@@ -30,6 +30,6 @@ function getArticleHint(str) {
     }
 
     // xhr.open("GET", "./app/ajax/searchBar.php&q=" + str);
-    xhr.open("POST", "./searchBar.php&q=" + str);
+    xhr.open("GET", "./app/ajax/searchBar.php" + str);
     xhr.send();
 }
