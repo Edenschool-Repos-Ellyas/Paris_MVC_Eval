@@ -39,7 +39,7 @@ $authors = $categoriesHelpers->helperFindUsersByRole("author");
 	
 					<div class="login flex flex-right flex-wrap">
 						<?php if(isset($_SESSION['user_id']) || isset($_SESSION['firstname'])) : ?>
-							<a href="<?php echo URL_ROOT; ?>/users/profile"><?= ucfirst($_SESSION['firstname']) ?></a>
+							<a href="<?php echo URL_ROOT; ?>/users/profile/<?= $_SESSION["user_id"] ?>"><?= ucfirst($_SESSION['firstname']) ?></a>
 							<a href="<?php echo URL_ROOT; ?>/users/logout">Log out</a>
 						<?php else : ?>
 							<a href="<?php echo URL_ROOT; ?>/users/login">
@@ -57,8 +57,8 @@ $authors = $categoriesHelpers->helperFindUsersByRole("author");
 					<div class="bordure bordure-droite"></div>
 					
 	
-					<div class="search flex flex-right">
-						<input type="search" name="search" id="search" class="">
+					<div class="search flex flex-right" id="searchContainer">
+						<form method="post"><input type="search" name="search" id="search" class=""></form>
 						<label for="search"><i class="fas fa-search fa-lg"></i></label>
 					</div>
 

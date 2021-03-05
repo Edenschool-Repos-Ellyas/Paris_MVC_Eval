@@ -20,6 +20,7 @@
 			</div>
 
 			<div class="container center">
+				<?php if(isLoggedIn()): ?>
 				<h3>Ajouter un commentaire</h3>
 
 				<form method="post" action="<?php echo URL_ROOT; ?>/articles/show/<?= $data["article"]->art_id ?>">
@@ -30,16 +31,22 @@
 
 					<button id="submit" type="submit" value="submit">Poster !</button>
 				</form>
+
+				<?php else: ?>
+				<!-- If we're not logged -->
+				<small><i>Pour ajouter un commentaire, connectez-vous <a href="<?= URL_ROOT . "/users/login" ?>" font-color="blue">ici</a></i></small>
+				<?php endif; ?>
+
 			</div>
 
 			<div class="comments-parent">
-			<?php foreach($data["comments"] as $comment): ?>
+				<?php foreach($data["comments"] as $comment): ?>
 				<div class="comment">
 					<h6><b><?= $comment->firstname ?></b> <b><?= $comment->lastname ?></b></h6>
 					<p> <?= $comment->text ?> </p>
 					<small>Posté le : <b> <?= $comment->created_at ?> </b></small>
 				</div>
-			<?php endforeach; ?>
+				<?php endforeach; ?>
 			</div>
 
             </div>
@@ -48,3 +55,7 @@
         </div>
     </div>
 </main>
+
+<?php
+	require APP_ROOT . '/views/inc/footer.php';
+?>

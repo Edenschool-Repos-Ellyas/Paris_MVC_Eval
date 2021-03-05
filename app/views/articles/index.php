@@ -14,13 +14,13 @@
 				<div class="container-item">
 
 					<!-- SI l'id d'autheur de l'article est celui l'utilisateur actuel alors il peut modifier-->
-					<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $article->user_id): ?>
+					<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $article->user_id || isAdmin()): ?>
 						<a
 							class="btn orange"
-							href="<?php echo URL_ROOT . "/articles/update/" . $article->id_article ?>">
+							href="<?php echo URL_ROOT . "/articles/update/" . $article->art_id ?>">
 							Update
 						</a>
-						<form action="<?php echo URL_ROOT . "/articles/delete/" . $article->id_article ?>" method="POST">
+						<form action="<?php echo URL_ROOT . "/articles/delete/" . $article->art_id ?>" method="POST">
 							<input type="submit" name="delete" value="Delete" class="btn red">
 						</form>
 					<?php endif; ?>

@@ -29,6 +29,16 @@ class Article {
     }
 
     /**
+     * recupé en ajax les articles qui contiennent une certainer chaine de charactères
+     */
+    public function findAllArticlesWithHint($q) 
+    {
+        $this->db->query('SELECT * FROM articles WHERE title LIKE :q');
+        $this->db->bind(":q", "%". $q ."%");
+        return $this->db->fetchAll();
+    }
+
+    /**
      * @return mixed
      * Récupère toutes les categories en bdd
      */
@@ -99,14 +109,14 @@ class Article {
 
     public function updateArticle($data)
     {
-        $this->db->query('UPDATE articles SET cat_id = :cat_id, title = :title, slug = :slug, image = :image, description = :description, body = :body WHERE id_article = :id_article');
+        $this->db->query('UPDATE articles SET cat_id = :cat_id, title = :title, slug = :slug, image = :image, description = :description, body = :body WHERE art_id = :art_id');
         $this->db->bind(':cat_id', $data['cat_id']);
         $this->db->bind(':title', $data['title']);
         $this->db->bind(':slug', $data['slug']);
         $this->db->bind(':image', $data['image']);
         $this->db->bind(':description', $data['description']);
         $this->db->bind(':body', $data['body']);
-        $this->db->bind(':id_article', $data['id_article']);
+        $this->db->bind(':art_id', $data['art_id']);
 
         if ($this->db->execute()) {
             return true;
@@ -117,7 +127,7 @@ class Article {
 
     public function deleteArticle($id) 
     {
-        $this->db->query('DELETE FROM articles WHERE id_article = :id');
+        $this->db->query('DELETE FROM articles WHERE art_id = :id');
         $this->db->bind(':id', $id);
 
         if ($this->db->execute()) {

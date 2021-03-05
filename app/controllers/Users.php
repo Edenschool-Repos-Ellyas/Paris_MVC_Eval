@@ -172,18 +172,20 @@ error_reporting(E_ALL);
                 if(!isLoggedIn()) {
                     header("Location: " . URL_ROOT . "/users/login");
                 }
-
-                $user = $this->userModel->findUserById($_SESSION["user_id"]);
+                $id = $_SESSION["user_id"];
             }
-            
+            $user = $this->userModel->findUserById($id);
+            $articles = $this->userModel->findUserArticles($id);
+
             $data = [
                 'user' => $user,
-                'firstname' => '',
-                'lastname' => '',
-                'address' => '',
-                'zip_code' => '',
-                'firstnameError' => '',
-                'lastnameError' => ''
+                'articles' => $articles,
+                'journal_name' => '',
+                'picture' => '',
+                'bio' => '',
+                'hobbies' => '',
+                'journal_nameError' => '',
+                
             ];
 
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -192,24 +194,22 @@ error_reporting(E_ALL);
                 
                 $data = [
                     'user' => $user,
-                    'firstname' => trim($_POST["firstname"]),
-                    'lastname' => trim($_POST["lastname"]),
-                    'address' => trim($_POST["address"]),
-                    'zip_code' => trim($_POST["zip_code"]),
-                    'firstnameError' => '',
-                    'lastnameError' => ''
+                    'journal_name' => trim($_POST["journal_name"]),
+                    'picture' => trim($_POST["picture"]),
+                    'bio' => trim($_POST["bio"]),
+                    'hobbies' => trim($_POST["hobbies"]),
+                    'journal_nameError' => '',
 
                 ];
                 
                 
-                if(empty($data['firstname']) && empty($data['lastname'])) {
-                    $data['firstnameError'] = 'The firstname cannot be empty';
-                    $data['lastnameError'] = 'The lastname cannot be empty';
+                if(empty($data['journal_name'])) {
+                    $data['journal_nameError'] = 'The journal name cannot be empty';
                 }
 
-                if (empty($data['firstnameError']) && empty($data['lastnameError'])) {
+                if (empty($data['journal_nameError'])) {
                     if ($this->userModel->updateUser($data)) {
-                        header("Location: " . URL_ROOT . "/users/profile");
+                        header("Location: " . URL_ROOT . "/users/profile/" . $_SESSION["user_id"]);
                     } else {
                         die("Something went wrong, please try again!");
                     }

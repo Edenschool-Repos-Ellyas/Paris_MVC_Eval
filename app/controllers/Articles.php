@@ -27,7 +27,7 @@ class Articles extends Controller {
         // changer pour afficher les catégories
         $users = $this->articleModel->findAllUsers();
         $data = [
-            'articles' => $articles,
+            'articles' => array_reverse($articles),
             'users' => $users,
         ];
 
@@ -61,7 +61,7 @@ class Articles extends Controller {
     {
         $articles = $this->articleModel->findAllArticles();
         $data = [
-            "articles" => $articles
+            "articles" => array_reverse($articles)
         ];
         $this->render('articles/gallery', $data);
     }
@@ -169,10 +169,12 @@ class Articles extends Controller {
     {
         $article = $this->articleModel->findArticleById($id);
 
-        if(!isLoggedIn()) {
-            header("Location: " . URL_ROOT . "/articles");
-        } elseif($article->user_id != $_SESSION['user_id']){
-            header("Location: " . URL_ROOT . "/articles");
+        if(!isAdmin()){
+            if(!isLoggedIn()) {
+                header("Location: " . URL_ROOT . "/articles");
+            } elseif($article->user_id != $_SESSION['user_id']){
+                header("Location: " . URL_ROOT . "/articles");
+            }
         }
 
         $data = [
@@ -193,9 +195,10 @@ class Articles extends Controller {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
-                'id_article' => $id,
+                'art_id' => $id,
                 'article' => $article,
                 'user_id' => $_SESSION['user_id'],
+                'cat_id' => $_SESSION['cat_id'],
                 'title' => trim($_POST['title']),
                 'slug' => trim($_POST['slug']),
                 'image' => trim($_POST['image']),
